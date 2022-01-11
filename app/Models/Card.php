@@ -9,15 +9,20 @@ class Card extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'firstName ',
-        'middleName ',
-        'lastName ',
-        'email',
-        'password',
-        'profile_img',
-        'login_criteria',
-        'login_id'
+        'name',
+        'user_id ',
     ];
+
     public $timestamps = true;
+    protected $hidden = ['pivot'];
+
+
+    public function contact(){
+        return $this->belongsToMany(Contact::class,'card_contacts','card_id');
+    }
+
+    public function connection(){
+        return $this->belongsTo(Connection::class,'');
+    }
 
 }

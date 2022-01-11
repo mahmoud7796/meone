@@ -10,10 +10,16 @@ class Contact extends Model
     use HasFactory;
 
     protected $fillable = [
-        'contact_id',
-        'card_id',
-        'card_string'
+        'provider_id',
+        'user_id',
+        'contact_string'
     ];
 
     public $timestamps = true;
+    protected $hidden = ['pivot'];
+
+
+    public function card(){
+        return $this->belongsToMany(Card::class,'card_contacts','contact_id');
+    }
 }

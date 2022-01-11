@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); 
+
+
+
+
+header {
+
+
+background-color:#EBF1F8;
+}
+
+
+
+.btn {
+	
+	border-radius: 10px;
+	
+}
+
+
+.nav-link {
+	 
+	border-bottom: 3px solid #0D67CB;
+	
+}
+
+#col1 {
+	
+	background-color: #E1EAF3;
+}
+    
+
+#text1 {
+	
+/*    color:#171717;*/
+	font-weight:500;
+	
+}
+
+.form-control {
+	
+background: var(--text-field-gray) 0% 0% no-repeat padding-box;
+background: #F1F4F9 0% 0% no-repeat padding-box;
+border-radius: 10px;
+	
+}
