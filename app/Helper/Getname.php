@@ -31,6 +31,7 @@ class Getname {
         {
             $fullName = $this->fName.' '.$this->mName.' '.$this->lName;
             $this->fullName = $fullName;
+            return $this->fullName;
         }
 
 }

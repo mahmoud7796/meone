@@ -61,6 +61,7 @@ class LoginController extends Controller
             $customName->getName($name);
              $fname = $customName->fName;
              $mName = $customName->lName;
+           return $fullName = $customName->fullName;
 
 
             $user = Socialite::with($service)->user();
