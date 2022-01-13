@@ -24,6 +24,8 @@
 
 	  <section class="row mb-5 align-items-center">
     <div class="col col-md-5 mt-5 pl-5">
+        @include('site.includes.alerts.errors')
+        @include('site.includes.alerts.success')
       <h2 class="display-5 font-style-normal font-weight-bold font-size-36 line-spacing-68 font-family-cairo ">All your Contacts in <span class="text-primary">one Place</span></h2>
       <p class="lead font-style-normal font-weight-normal font-size-20 line-spacing-68 font-family-cairo text-muted mt-5">
        1Me Gives you the Opportunity to Store, Sort and Edit your Contacts in one place, 1Me Helps you Control and share your Contacts With your Friends, Relatives and Co-Workers with our<span class="text-primary"> Collections </span>Feature

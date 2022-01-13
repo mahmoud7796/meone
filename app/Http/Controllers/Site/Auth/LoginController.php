@@ -40,14 +40,13 @@ class LoginController extends Controller
                 return redirect()->route('site.home');
             }else
             {
-                return redirect()->back()->with(['error' => 'Email Or Password Is Wrong']);
+                return redirect()->back()->with(['error' => 'Password Is Wrong']);
             }
         }catch (\Exception $ex){
             return redirect()->back()->with(['error' => 'Something error please try again later']);
 
         }
     }
-
 
     public function redirect($service){
         return Socialite::driver($service)->redirect();
@@ -56,27 +55,19 @@ class LoginController extends Controller
 
     public function callback($service){
         try {
-            $name = 'Mahmoud Kamal Ali Diab Alis  dskvp dk pdoskvodpvks ';
-            $customName = new Getname();
-            $customName->getName($name);
-             $fname = $customName->fName;
-             $mName = $customName->lName;
-           return $fullName = $customName->fullName;
-
-
             $user = Socialite::with($service)->user();
-            $user_data = response()->json($user);
+             $user_data = response()->json($user);
             $save_user_data = User::updateOrCreate([
                 'facebook_id'=>$user_data->getId()
             ],[
                 'first_name' => $user_data->getName(),
             ]);
+            return $user_data;
 
         }catch (\Exception $ex){
             return redirect()->back()->with(['error' => 'Something error please try again later']);
 
         }
-
 
     }
 

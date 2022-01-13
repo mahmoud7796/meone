@@ -66,28 +66,51 @@
 		<div class="col pl-5 mt-5">
 			<form action="{{route('site.register.create')}}">
                 @csrf
-                @method('PUT')
 			<div class="form-group">
     <label for="exampleFormControlInput1" class="display-5 font-style-normal font-weight-bold font-size-36 line-spacing-68 font-family-cairo">Register by Email</label>
 
-    <input type="text" class="form-control mt-3" id="exampleFormControlInput1" placeholder="Full Name">
+    <input type="text" name="firstName" class="form-control mt-3" id="exampleFormControlInput1" placeholder="First Name">
+                @error('firstName')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
+  </div>
+                <div class="form-group">
+                    <input type="text" name="middleName" class="form-control mt-3" id="exampleFormControlInput1" placeholder="Middle Name">
+                    @error('middleName')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
+
+                    <input name="lastName" type="text" class="form-control mt-3" id="exampleFormControlInput1" placeholder="Last Name">
+                    @error('lastName')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
+
+
+                <div class="form-group">
+
+    <input type="email" name="email" class="form-control " id="exampleFormControlInput2" placeholder="Email Address">
+                    @error('email')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
   </div>
 
 			<div class="form-group">
 
-    <input type="email" class="form-control " id="exampleFormControlInput2" placeholder="Email Address">
-  </div>
-
-			<div class="form-group">
-
-    <input type="password" class="form-control " id="exampleFormControlInput3" placeholder="Password">
+    <input type="password" name="password" class="form-control " id="exampleFormControlInput3" placeholder="Password">
+                @error('password')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
   </div>
 
 				 <div class="form-group">
 
-    <input type="password" class="form-control" id="exampleFormControlInput4" placeholder="Confirm Password">
-  </div>
+    <input type="password" name="password_confirmation" class="form-control" id="exampleFormControlInput4" placeholder="Confirm Password">
 
+  </div>
+                <button type="submit" class="btn btn-warning mr-2">Create Account</button>
 
 			</form>
 
@@ -147,7 +170,6 @@
 		<div class="col d-flex justify-content-center text-center ">
 			<p class="font-style-normall font-size-18 line-spacing-33 font-family-cairo text-muted">
 
-			<button type="button" class="btn btn-warning mr-2">Create Account</button>
 			Already Have an Account ?
 			<a href="{{route('site.login')}}">Sign in</a>
 
