@@ -21,9 +21,9 @@ class RegisterController extends Controller
 
     protected function create(RegisterRequest $request)
     {
+        DB::beginTransaction();
         try {
             // return env('APP_URL');
-            DB::beginTransaction();
             $user = User::create([
                 'firstName' => $request->firstName,
                 'middleName' => $request->middleName,
@@ -31,20 +31,19 @@ class RegisterController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
-
              $verifyEmailToken = UserVerifyEmail::create([
                 'user_id' =>$user->id,
                 'token' => Str::random(64),
             ]);
+            DB::commit();
             $on = Carbon::now()->addSeconds(2.5);
             dispatch(new VerifyEmailJob($user,$verifyEmailToken))->delay($on);
 
-            DB::commit();
             return redirect()->route('landingPage')->with(['success'=>'We send verifying email please check it']);
 
         }catch (\Exception $ex){
             DB::rollback();
-           // return $ex;
+            return $ex;
             return redirect()->route('landingPage')->with(['error'=>'Oops something error please try again']);
         }
 

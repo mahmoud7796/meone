@@ -3,6 +3,7 @@
 use App\Http\Controllers\Site\Auth\LoginController;
 use App\Http\Controllers\Site\Auth\LogoutController;
 use App\Http\Controllers\Site\Auth\RegisterController;
+use App\Http\Controllers\Site\Pages\ContactController;
 use App\Http\Controllers\Site\Pages\HomeController;
 use App\Http\Controllers\Site\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
@@ -63,7 +64,8 @@ Route::group(['middleware'=>'guest:web'], function(){
 });
 
 Route::group(['middleware'=>'auth:web'], function(){
-    Route::get('/home', [HomeController::class,'home'])->name('site.home');
+    Route::get('/home', [HomeController::class,'home'])->name('home');
+    Route::get('/contact', [ContactController::class,'getUserContact'])->name('site.contact.getUserContact');
 
 });
 
@@ -79,3 +81,6 @@ Route::group(['middleware'=>'auth:web'], function(){
 Route::get('/get-card', [App\Http\Controllers\HomeController::class, 'getCard'])->name('card');
 
 
+Route::get('/test',function(){
+    return env('APP_URL');
+});

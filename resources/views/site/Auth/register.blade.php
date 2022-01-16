@@ -23,8 +23,9 @@
   <div class="col col-sm ml-5 pl-5" id="col1" >
 	<div class="container">
 		<div class="row mt-5 pl-5 mb-5 pb-5">
-	  <img src="{{asset('assets/img/logo.png')}}" width="80" height="80" alt=""/>
-		</div>
+            <a href="{{route('landingPage')}}">
+                <img src="{{asset('assets/img/logo.png')}}" width="80" height="80" alt=""/>
+            </a>		</div>
 		<div class="row mt-5 mb-5 pb-5 ">
 	  <img src="{{asset('assets/img/Sign in ~ Register Illustration.png')}}" width="263" height="241" alt=""/>
 		</div>

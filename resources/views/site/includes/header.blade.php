@@ -1,45 +1,56 @@
-<header class="navbar navbar-expand  flex-column flex-md-row bd-navbar">
-    <a class="navbar-brand ml-5 mr-0 mr-md-3" href="{{route('landingPage')}}">
+<header class="navbar navbar-expand fixed-top flex-column flex-md-row bd-navbar">
+    <a class="navbar-brand ml-5 mr-0 mr-md-3" href="">
         <img class="logo" src="{{asset('assets/img/logo.png')}}" alt="logo">
     </a>
 
     <div class="navbar-nav-scroll">
         <ul class="navbar-nav bd-navbar-nav ml-3 flex-row">
-            <li class="nav-item">
-                <a class="nav-link " href="{{route('landingPage')}}" >Home</a>
+            <li class="nav-item1">
+                <a class="nav-link " href="" >Home</a>
             </li>
+            <li class="nav-item2 ml-5">
+                <a class="nav-link text-muted" href="" >Address Book</a>
+            </li>
+
         </ul>
     </div>
 
     <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-        @guest
-        <li class="nav-item ">
-            <a class="nav-item  mr-md-2" href="{{route('site.register')}}" id="">
-                <button type="button" class="btn btn-warning">register</button>
-            </a>
-
-        </li>
-        @endguest
-
-        @guest
-        <li class="nav-item ">
-            <a class="nav-item  mr-md-2" href="{{route('site.login')}}" id="">
-                <button type="button" class="btn btn-light">log in</button>
-            </a>
-
-        </li>
-        @endguest
-
-        @Auth
+    @guest
             <li class="nav-item ">
-                <a class="nav-item  mr-md-2" href="{{route('site.logout')}}" id="">
-                    <button type="button" class="btn btn-light">Logout</button>
+                <a class="nav-item  mr-md-2" href="{{route('site.register')}}" id="">
+                    <button type="button" class="btn btn-warning">register</button>
                 </a>
 
             </li>
+        @endguest
+
+            @guest
+                <li class="nav-item ">
+                    <a class="nav-item  mr-md-2" href="{{route('site.login')}}" id="">
+                        <button type="button" class="btn btn-light">log in</button>
+                    </a>
+
+                </li>
+            @endguest
+
+            @Auth
+                <li class="nav-item ">
+                    <a class="nav-item  mr-md-2" href="{{route('site.logout')}}" id="">
+                        <button type="button" class="btn btn-light">Logout</button>
+                    </a>
+
+                </li>
+            @endauth
+
+        @Auth
+        <li class="nav-item ">
+            <a class="nav-item mr-md-2 ml-3" href="">
+                <img src="{{asset('assets/img/Navigation Profile Image.png')}}" width="43" height="43" alt=""/>
+            </a>
+
+        </li>
         @endauth
-
-
         <li class="nav-item ">
             <a class="nav-item mr-md-5" href="#" id="">
                 <button type="button" class="btn btn-secondary"> AR <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16">

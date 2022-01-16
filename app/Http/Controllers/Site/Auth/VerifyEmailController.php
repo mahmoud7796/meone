@@ -10,9 +10,9 @@ class VerifyEmailController extends Controller
 
     public function verifyEmail($token)
     {
-        $verifyUser = UserVerifyEmail::whereToken($token)->first();
+         $verifyUser = UserVerifyEmail::whereToken($token)->first();
         if($verifyUser){
-             $user = $verifyUser->users;
+              $user = $verifyUser->users;
             if(!$user->email_verified_at) {
                 $verifyUser->users->email_verified_at = now();
                  $verifyUser->users->save();

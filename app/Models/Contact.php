@@ -22,4 +22,8 @@ class Contact extends Model
     public function card(){
         return $this->belongsToMany(Card::class,'card_contacts','contact_id');
     }
+
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+    }
 }

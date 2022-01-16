@@ -25,7 +25,7 @@ class LogoutController extends Controller
     {
         $gaurd = $this->getGaurd();
         $gaurd->logout();
-        return redirect()->route('landingPage');
+        return redirect()->route('site.login');
     }
 
     private function getGaurd()
