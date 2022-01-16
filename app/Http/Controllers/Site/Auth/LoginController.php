@@ -35,13 +35,19 @@ class LoginController extends Controller
             {
                 return redirect()->back()->with(['error' => 'This email doesn\'t match our record']);
             }
-            if (auth()->guard()->attempt(['email' => $request->input('email'), 'password' => $request->input('password')]))
-            {
-                return redirect()->route('site.home');
-            }else
-            {
-                return redirect()->back()->with(['error' => 'Password Is Wrong']);
+
+            if($userEmail->email_verified_at){
+                if (auth()->guard()->attempt(['email' => $request->input('email'), 'password' => $request->input('password')]))
+                {
+                    return redirect()->route('site.home');
+                }else
+                {
+                    return redirect()->back()->with(['error' => 'Password Is Wrong']);
+                }
+            }else{
+                return redirect()->back()->with(['error' => 'Please Verify Your Email']);
             }
+
         }catch (\Exception $ex){
             return redirect()->back()->with(['error' => 'Something error please try again later']);
 

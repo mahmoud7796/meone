@@ -2,15 +2,15 @@
 
 namespace App\Jobs;
 
-use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
+use \App\Mail\VerifyEmail;
 
-class VerifyEmail implements ShouldQueue
+class VerifyEmailJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -20,9 +20,13 @@ class VerifyEmail implements ShouldQueue
      * @return void
      */
     public $user;
-    public function __construct(User $user)
+    public $verifyEmailToken;
+
+    public function __construct($user,$verifyEmailToken)
     {
         $this->user= $user;
+        $this->verifyEmailToken= $verifyEmailToken;
+
     }
 
     /**
@@ -32,7 +36,7 @@ class VerifyEmail implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->user->email)->send(new \App\Mail\VerifyEmail($this->user));
+        Mail::to($this->user->email)->send(new VerifyEmail($this->user,$this->verifyEmailToken));
 
     }
 }

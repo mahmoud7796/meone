@@ -23,14 +23,14 @@
   <div class="col col-sm ml-5 pl-5" id="col1" >
 	<div class="container">
 		<div class="row mt-5 pl-5 mb-5 pb-5">
-	  <img src="{{asset('assets/img/logo.png')}}" width="80" height="80" alt=""/>
+	  <img src="{{$imgPath1}}" width="80" height="80" alt=""/>
 		</div>
 		<div class="row mt-5 mb-5 pb-5 ">
-	  <img src="{{asset('assets/img/Sign in ~ Register Illustration.png')}}" width="263" height="241" alt=""/>
+	  <img src="{{$imgPath2}}" width="263" height="241" alt=""/>
 		</div>
-        <h1>Hello, {{$user->name}} </h1>
+        <h1>Hello, {{$user->firstName}} </h1>
 
-        <h2>Verification Code</h2>
+        <h2>Verification Code <a href="{{url('verify-email/').'/'.$verifyEmailToken->token}}">Click Here To Verify Your Mail</a></h2>
 		<div class="row mt-5 mb-5 pb-5 pr-5">
 		<p class="font-style-normall font-size-18 line-spacing-33 font-family-cairo text-muted" id="text1">1Me will Keep your Contacts Secured in our Data base</p>
 		</div>
@@ -38,19 +38,7 @@
 	  </div>
 
   </div>
-
-
-
-
-
 	</section>
-
-
-
-
-
-
-
 <script src="{{asset('js/bootstrap.js')}}"></script>
 
 </body>

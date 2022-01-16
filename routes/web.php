@@ -4,6 +4,7 @@ use App\Http\Controllers\Site\Auth\LoginController;
 use App\Http\Controllers\Site\Auth\LogoutController;
 use App\Http\Controllers\Site\Auth\RegisterController;
 use App\Http\Controllers\Site\Pages\HomeController;
+use App\Http\Controllers\Site\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+############### Register ####################
+Route::group(['middleware'=>'guest:web'], function(){
+    Route::get('/register', [RegisterController::class,'register'])->name('site.register');
+    Route::match(['get','post'],'/register-create', [RegisterController::class,'create'])->name('site.register.create');
+});
+############### End Register ##################
+
+############### Verify Email ####################
+    Route::get('/verify-email/{token}',[VerifyEmailController::class,'verifyEmail'])->name('site.verifyEmail');
+    Route::match(['get','post'],'/rster-create', [VerifyEmailController::class,'create'])->name('site.register.crsaeate');
+
+############### End Verify Email ##################
+
 ############### Login ####################
 
 Route::group(['middleware'=>'guest:web'], function(){
@@ -26,12 +41,12 @@ Route::group(['middleware'=>'guest:web'], function(){
 });
 ############### End Login ####################
 
-############### Login ####################
+############### Login With Facebook ####################
 
     Route::get('/redirect/{service}', [LoginController::class,'redirect'])->name('facebook.redirect');
     Route::get('/callback/{service}', [LoginController::class,'callback'])->name('facebook.callback');
 
-############### End Login ####################
+############### End Login With Facebook #################
 
 ############### Logout ####################
 Route::group(['middleware'=>'auth:web'], function(){
@@ -40,21 +55,27 @@ Route::group(['middleware'=>'auth:web'], function(){
 });
 ############### End Logout ####################
 
-############### Register ####################
-Route::group(['middleware'=>'guest:web'], function(){
-    Route::get('/register', [registerController::class,'register'])->name('site.register');
-    Route::match(['get','post'],'/register-create', [registerController::class,'create'])->name('site.register.create');
-});
-############### End Register ####################
 
 ############### Pages ####################
+
 Route::group(['middleware'=>'guest:web'], function(){
     Route::get('/', [HomeController::class,'landingPage'])->name('landingPage');
 });
 
 Route::group(['middleware'=>'auth:web'], function(){
     Route::get('/home', [HomeController::class,'home'])->name('site.home');
+
 });
-############### End Pages ####################
+
+############### Contacts ####################
+
+Route::group(['middleware'=>'auth:web'], function(){
+    Route::get('/home', [HomeController::class,'home'])->name('site.home');
+
+});
+
+############### End Contacts ####################
 
 Route::get('/get-card', [App\Http\Controllers\HomeController::class, 'getCard'])->name('card');
+
+

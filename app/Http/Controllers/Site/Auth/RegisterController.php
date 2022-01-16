@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Site\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
-use App\Jobs\VerifyEmail;
+use App\Jobs\VerifyEmailJob;
 use App\Models\User;
+use App\Models\UserVerifyEmail;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
+use DB;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -17,17 +21,33 @@ class RegisterController extends Controller
 
     protected function create(RegisterRequest $request)
     {
-         $user = User::create([
-            'firstName' => $request->firstName,
-            'middleName' => $request->middleName,
-            'lastName' => $request->lastName,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        try {
+            // return env('APP_URL');
+            DB::beginTransaction();
+            $user = User::create([
+                'firstName' => $request->firstName,
+                'middleName' => $request->middleName,
+                'lastName' => $request->lastName,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
 
-         dispatch(new VerifyEmail($user));
+             $verifyEmailToken = UserVerifyEmail::create([
+                'user_id' =>$user->id,
+                'token' => Str::random(64),
+            ]);
+            $on = Carbon::now()->addSeconds(2.5);
+            dispatch(new VerifyEmailJob($user,$verifyEmailToken))->delay($on);
 
-        return redirect()->route('landingPage')->with(['success'=>'We send verifying email check it']);
+            DB::commit();
+            return redirect()->route('landingPage')->with(['success'=>'We send verifying email please check it']);
+
+        }catch (\Exception $ex){
+            DB::rollback();
+           // return $ex;
+            return redirect()->route('landingPage')->with(['error'=>'Oops something error please try again']);
+        }
+
 
     }
 }

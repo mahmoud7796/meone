@@ -16,10 +16,13 @@ class VerifyEmail extends Mailable
      * @return void
      */
     public $user;
+    public $verifyEmailToken;
 
-    public function __construct($user)
+    public function __construct($user,$verifyEmailToken)
     {
         $this->user = $user;
+        $this->verifyEmailToken = $verifyEmailToken;
+
     }
     /**
      * Build the message.
@@ -28,8 +31,11 @@ class VerifyEmail extends Mailable
      */
     public function build()
     {
+        $imgPath1=env('APP_URL').'/assets/img/logo.png';
+        $imgPath2=env('APP_URL').'/assets/img/Sign in ~ Register Illustration.png';
         $user = $this->user;
+        $verifyEmailToken= $this->verifyEmailToken;
         return $this->subject('Mail from Oneme')
-            ->view('site.auth.verifyEmail',compact('user'));
+            ->view('site.auth.verifyEmail',compact('user','imgPath1','imgPath2','verifyEmailToken'));
     }
 }
