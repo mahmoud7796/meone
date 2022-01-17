@@ -2275,9 +2275,14 @@
             },
             cache: false,
             success: function (response){
-                if(response===true){
-                    $(this).css("addContactToCard", "none");
-                    $('#removeContactFromCard').css("display", "block");
+                if(response.status===true){
+                  //  var contactId = $('#addContactToCard').find('id');
+                  //  $("#addContactToCard").find(`[id='${current}']`)
+                    //$('#btn2').show();
+                    $(e.target).addClass('d-none');
+                    $(e.target).next('#removeContactFromCard').removeClass('d-none');
+                    $('#btn2').show();
+
                 }
             }, error: function (reject){
 
