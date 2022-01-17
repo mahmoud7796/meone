@@ -72,8 +72,8 @@ Route::group(['middleware'=>'auth:web'], function(){
 ############### Contacts ####################
 
 Route::group(['middleware'=>'auth:web'], function(){
-    Route::get('/home', [HomeController::class,'home'])->name('site.home');
-
+    Route::post('/contact-store', [ContactController::class,'sotreInSession'])->name('site.contacts.sotreInSession');
+    Route::get('/contact-remove', [ContactController::class,'removeFromSession'])->name('site.contacts.removeFromSession');
 });
 
 ############### End Contacts ####################

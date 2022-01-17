@@ -1,5 +1,26 @@
 <!doctype html>
 <html lang="en"><head>
+    <head>
+        <title>1 ME</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        {{--jquery and ajax--}}
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js">
+            {{--jquery and ajax--}}
+            {{--Bootstrab --}}
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        {{--Bootstrab --}}
+
+
+        {{--validate jquery --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
+        {{-- validate jquery --}}
+    </head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -41,48 +62,12 @@
 
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-		   <div class="row  d-flex justify-content-center " style="font: normal normal bold 24px/45px Cairo; color: #0D67CB">
-	<p class="text-center">New Card</p>
-	</div>
-			   <div class="row pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-                   <form id="addCardForm">
-                       @csrf
-                       <input type="text" name="cardName" class="form-control" placeholder="Card Name">
-                   </form>
-	</div>
-		      	   <div class="row pt-5 d-flex justify-content-center" style="font: normal normal bold 18px/33px Cairo; color: #171717;">
-	<p class="text-center">Add a Verified Contact to your Card</p>
-	</div>
-                   @if(isset($contacts) && $contacts->count()>0)
-                       @foreach($contacts as $contact)
-	        			<div class="row pt-5 d-flex justify-content-center align-content-center">
-                <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#3C5A9A" class="bi bi-facebook" viewBox="0 0 16 16">
-  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-</svg></a>
-				<p class="pl-5 pt-2 pr-5">{{$contact->contact_string}}</p>
-                 <button type="button" class="btn btn-outline-primary btn-sm" data-id="{{$contact->id}}" id="addContactToCard">Add</button>
-                 <button type="button" class="btn btn-outline-secondary btn-sm d-none" data-id="{{$contact->id}}" id="removeContactFromCard">Remove</button>
-			</div>
-              @endforeach
-          @else
-              <div class="row pt-5 d-flex justify-content-center align-content-center">
-                  <p class="pl-5 pt-2 pr-5">You have no contacts add at least one contact</p>
-              </div>
-          @endif
 
 
-      </div>
-      <div class="modal-footer pr-5 pt-5 pb-5">
-       <button type="button" class="btn btn-light">Reset</button>
-	   <button type="button" id="saveCard" class="btn btn-warning">Save Card</button>
-      </div>
+      <!-- Modal For Add New Card and Contacts addNewCard-->
+@include('site.includes.newCardModal')
+        <!-- end Modal For Add New Card and Contacts-->
+
     </div>
   </div>
 </div>
@@ -217,47 +202,18 @@
 					   <p class=" pl-3 pr-4"  style="color: #FBFBFB">Added</p>
 
 					</div>
-
 					<div class="row">
-
-
 						<p class="pl-5" style="color: #FBFBFB">3</p>
 
-
-
 					</div>
-
-
-
 				</div>
-
 			</div>
-
-
 		</div>
-
 		<div class="col col-md-4">
-
-
 			 <img class="" src="img/qr-code 3.png" width="84" height="84" alt=""/>
-
-
-
-
 		</div>
-
-
-
-
-
 			</div>
-
-
-
-
 			   </div>
-
-
         </div>
 	    <div class="carousel-item  pl-5 pr-5 pt-3  pb-5">
 	        <div class="card pl-5 pr-5 pt-3  pb-5 ">
@@ -307,11 +263,8 @@
 			</div>
 			   </div>
   </div>
-
  		<a class="carousel-control-prev " href="#carouselExampleIndicators1" role="button" data-slide="prev" > <span class="carousel-control-prev-icon pl-5" aria-hidden="true" ></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true" ></span> <span class="sr-only">Next</span> </a>
-
 	</div>
-
 			   </div>
 				 </div>
 				 </div>
@@ -351,9 +304,6 @@
 				<p class="pl-5 pt-2 pr-5">Email@Example.com</p>
 	                <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-2">Remove</button>
 			</div>
-
-
-
 
 		        			<div class="row pt-5 d-flex justify-content-center align-content-center">
 
@@ -491,7 +441,6 @@
     </div>
   </div>
 </div>
-
 
 
         <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel5" aria-hidden="true">
@@ -640,41 +589,23 @@
 			<a href="" class="pl-5"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#7B8794" class="bi bi-trash-fill" viewBox="0 0 16 16">
   <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
 </svg></a>
-
 			</div>
 
-
-
 			</div>
-
-
-
-
-
 
 	</section>
-
-
 
 	<section>
 
 
-
 	<div class="row d-flex jusyify-content-center">
-
 		<div class="col-md-6 ">
 
-
 			<div class="row pl-5 ml-5">
-
 			<p class="font-weight-bold" style="font-size: 22px">Your Contacts</p>
-
 			</div>
-
 			<div class="row pt-3 pl-5 ml-5">
-
 			<p class="font-weight-bold" style="font-size: 17px; color:#52606D;">Verified Contacts</p>
-
 			</div>
 
 
@@ -2315,38 +2246,44 @@
   </div>
 </div>
 
-
-
-
 			   </div>
-
-
 			</div>
 
-
-
-
-
-
 		</div>
 
-
-
-
-
 		</div>
-
 
 	</section>
 
-
-
-
 	</div>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $(document).on('click', '#addContactToCard', function(e){
+        e.preventDefault();
+        var contactId = $(this).data('id');
+     //   var contactIdArray= contactId.split('');
+       // console.log(contactIdArray)
+        $.ajax({
+            type: 'post',
+            url: "{{route('site.contacts.sotreInSession')}}",
+            data: {
+                contactId:contactId,
+            },
+            cache: false,
+            success: function (response){
+                if(response===true){
+                    $(this).css("addContactToCard", "none");
+                    $('#removeContactFromCard').css("display", "block");
+                }
+            }, error: function (reject){
 
-
-<script src="{{asset('assets/js/jquery-3.2.1.min.js')}}"></script>
-<script src="{{asset('assets/js/popper.min.js')}}"></script>
-<script src="{{asset('assets/js/bootstrap.js')}}"></script>
+            }
+        });
+    });
+</script>
 </body>
 </html>
