@@ -74,9 +74,20 @@ Route::group(['middleware'=>'auth:web'], function(){
 Route::group(['middleware'=>'auth:web'], function(){
     Route::post('/contact-store', [ContactController::class,'sotreInSession'])->name('site.contacts.sotreInSession');
     Route::get('/contact-remove', [ContactController::class,'removeFromSession'])->name('site.contacts.removeFromSession');
+    Route::post('/contact-create', [ContactController::class,'create'])->name('site.contacts.create');
+
 });
 
 ############### End Contacts ####################
+
+############### Providers ####################
+
+Route::group(['middleware'=>'auth:web'], function(){
+   // Route::get('/all-providers', [HomeController::class,'getProviders'])->name('site.contacts.getProviders');
+  //  Route::get('/contact-remove', [ContactController::class,'removeFromSession'])->name('site.contacts.removeFromSession');
+});
+
+############### End Providers ####################
 
 Route::get('/get-card', [App\Http\Controllers\HomeController::class, 'getCard'])->name('card');
 

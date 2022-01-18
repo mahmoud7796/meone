@@ -1,0 +1,34 @@
+$(document).on('click', '#saveContact', function(e){
+    e.preventDefault();
+    $('#contact_error').text('');
+
+    var selectedProviderId= $('#provider').find(":selected").val();
+    console.log(selectedProviderId)
+    var contactName= $('#contactName').val();
+    console.log(contactName)
+
+    $.ajax({
+        type: 'post',
+        enctype: 'multipart/form-data',
+        url: "{{route('site.contacts.create')}}",
+        data:{
+            contact:contactName,
+            provider_id:selectedProviderId
+        } ,
+        cache: false,
+        success: function (response){
+            if(response.status===true){
+                window.location.href = "{{route('home')}}";
+                setInterval(myTimer, 4000);
+                function myTimer() {
+                    $('#sucessMsgAddContact').show();
+                }
+            }
+        }, error: function (reject){
+            var response = $.parseJSON(reject.responseText);
+            $.each(response.errors, function(key, val){
+                $("#" + key + "_error").text(val[0]);
+            });
+        }
+    });
+});

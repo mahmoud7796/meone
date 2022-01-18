@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site\Pages;
 use App\Http\Controllers\Controller;
 use App\Models\Card;
 use App\Models\Contact;
+use App\Models\Provider;
 use Auth;
 
 class HomeController extends Controller
@@ -30,7 +31,9 @@ class HomeController extends Controller
     {
         $userId = Auth::id();
         $contacts = Contact::whereUserId($userId)->get();
-        return view('site.pages.home',compact('contacts'));
+        $providers = Provider::get();
+
+        return view('site.pages.home',compact('contacts','providers'));
     }
 
     public function getCard()

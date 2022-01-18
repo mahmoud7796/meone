@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Site\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactRequest;
+use App\Models\Contact;
 use Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class ContactController extends Controller
 {
@@ -14,7 +15,7 @@ class ContactController extends Controller
         session()->push('card.contactId',$request->contactId);
         return response()->json([
             'status' => true,
-            'msg' => 'added successfully',
+            'msg' => 'Contact added successfully',
         ]);
     }
 
@@ -41,6 +42,22 @@ class ContactController extends Controller
 
             }
         }
+    }
+
+    public function create(ContactRequest $request)
+    {
+        $userId= Auth::id();
+        Contact::create([
+            'contact_string' => $request->contact,
+            'provider_id' => $request->provider_id,
+            'user_id' => $userId,
+        ]);
+
+        return response()->json([
+            'status' => true,
+            'msg' => 'added successfully',
+        ]);
+
     }
 
 }

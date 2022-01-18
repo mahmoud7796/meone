@@ -46,14 +46,11 @@
 
 
 	     <div class="col-md-6 mt-5 pt-5">
-
 		 <div class="row">
-
-
 				 <div class="col d-flex justify-content-center">
-				 <p class="font-weight-bold" style="font-size: 22px">Your Cards</p>
-				 </div>
 
+                     <p class="font-weight-bold" style="font-size: 22px">Your Cards</p>
+				 </div>
 			  <div class="col d-flex justify-content-center">
 				 <button type="button" class="btn btn-outline-primary pl-5 pr-5 font-weight-medium" data-toggle="modal" data-target="#exampleModal" style="border-width:medium">New Card</button>
 
@@ -608,27 +605,25 @@
 			<p class="font-weight-bold" style="font-size: 17px; color:#52606D;">Verified Contacts</p>
 			</div>
 
-
 			<div class="row pl-5">
 
 		<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
 
 	  <ol class="carousel-indicators">
-	    <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
-	    <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
-	    <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
-  </ol>
+          @if(isset($contacts) && $contacts->count()>0)
+              @foreach($contacts as $index => $contact)
+	    <li data-target="#carouselExampleIndicators2" data-slide-to="{{$index}}" class="{{$index == 0 ? 'active':''}}"></li>
+              @endforeach
+              @endif
+      </ol>
 
-
-
+<!--  Carousel For show Contacts showCarouselContacts-->
 	  <div class="carousel-inner text-center" role="listbox">
 
-
-		   <div class="carousel-item pl-5 pr-5 pt-3 pb-5 active">
-
-
+           @if(isset($contacts) && $contacts->count()>0)
+               @foreach($contacts as $index => $contact)
+		   <div class="carousel-item pl-5 pr-5 pt-3 pb-5 {{$index == 0 ? 'active':''}}">
 	        <div class="card pl-5 pr-5 pt-3  pb-5 ">
-
 	           <div class="row pt-5 pl-5 pr-5">
 
 
@@ -641,119 +636,26 @@
   <path id="Path_9" data-name="Path 9" d="M337.926,92.677H333.5c-2.629,0-5.554,1.106-5.554,4.917.013,1.328,0,2.6,0,4.031H324.9v4.84h3.136V120.4H333.8V106.373h3.8l.344-4.762H333.7s.01-2.118,0-2.733c0-1.506,1.567-1.42,1.661-1.42.746,0,2.2,0,2.568,0V92.677h0Z" transform="translate(-311.423 -86.538)" fill="#fff"/>
 </svg></span></a>
 
-				<p class="pl-5">Email@Example.com</p>
+				<p class="pl-5">{{$contact->contact_string}}</p>
 
 
 
 			</div>
-
-				<div class="row pt-5 pl-5 pr-5">
-
-
-								   <a class="pr-3"  data-toggle="modal" data-target="#exampleModal7" href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#7B8794" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-  <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-</svg></a>
-                                   <img src="img/Instgram.png" width="40" height="40" alt=""/>
-<p class="pl-5">Email@Example.com</p>
-
-
-
-			</div>
-
-				<div class="row pt-5 pl-5 pr-5">
-
-								   <a class="pr-3" data-toggle="modal" data-target="#exampleModal8" href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#7B8794" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-  <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-</svg></a>
-
-                <a href=""><span class="pr-3"><svg xmlns="http://www.w3.org/2000/svg" id="Twitter" width="40" height="40" viewBox="0 0 40 40">
-  <circle id="Ellipse_22" data-name="Ellipse 22" cx="20" cy="20" r="20" fill="#2daae1"/>
-  <path id="Path_29" data-name="Path 29" d="M257.762,145.789a10.5,10.5,0,0,1-3.022.829,5.277,5.277,0,0,0,2.313-2.911,10.511,10.511,0,0,1-3.342,1.277,5.264,5.264,0,0,0-9.1,3.6,5.321,5.321,0,0,0,.136,1.2,14.939,14.939,0,0,1-10.844-5.5,5.267,5.267,0,0,0,1.628,7.024,5.237,5.237,0,0,1-2.383-.658v.066a5.264,5.264,0,0,0,4.22,5.159,5.234,5.234,0,0,1-1.386.184,5.34,5.34,0,0,1-.99-.093,5.268,5.268,0,0,0,4.914,3.654,10.594,10.594,0,0,1-7.79,2.178,14.962,14.962,0,0,0,23.035-12.6q0-.342-.016-.681A10.72,10.72,0,0,0,257.762,145.789Z" transform="translate(-224.939 -133.745)" fill="#fff"/>
-</svg></a>
-				<p class="pl-5">User Example</p>
-			</div>
-
-			   </div>
+            </div>
 		  </div>
-	    <div class="carousel-item pl-5 pr-5 pt-3 pb-5">
+              @endforeach
+          @else
+              <div class="carousel-item pl-5 pr-5 pt-3 pb-5 active">
+                  <div class="card pl-5 pr-5 pt-3  pb-5 ">
+                      <div class="row pt-5 pl-5 pr-5">
+                          <p class="pl-5">You do not added any contacts</p>
+                      </div>
+                  </div>
+              </div>
+          @endif
 
-	        <div class="card pl-5 pr-5 pt-3  pb-5 ">
-	           <div class="row pt-5 pl-5 pr-5">
-				   <a class="pr-3"  data-toggle="modal" data-target="#exampleModal9" href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#7B8794" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-  <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-</svg></a>
 
-                <a href=""><span class="pr-3"><svg xmlns="http://www.w3.org/2000/svg" id="Facebook" width="40" height="40" viewBox="0 0 40 40">
-  <circle id="Ellipse_7" data-name="Ellipse 7" cx="20" cy="20" r="20" fill="#3c5a9a"/>
-  <path id="Path_9" data-name="Path 9" d="M337.926,92.677H333.5c-2.629,0-5.554,1.106-5.554,4.917.013,1.328,0,2.6,0,4.031H324.9v4.84h3.136V120.4H333.8V106.373h3.8l.344-4.762H333.7s.01-2.118,0-2.733c0-1.506,1.567-1.42,1.661-1.42.746,0,2.2,0,2.568,0V92.677h0Z" transform="translate(-311.423 -86.538)" fill="#fff"/>
-</svg></span></a>
-
-				<p class="pl-5">Email@Example.com</p>
-			</div>
-				<div class="row pt-5 pl-5 pr-5">
-
-								   <a class="pr-3"  data-toggle="modal" data-target="#exampleModal10" href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#7B8794" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-  <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-</svg></a>
-                                   <img src="img/Instgram.png" width="40" height="40" alt=""/>
-<p class="pl-5">Email@Example.com</p>
-
-			</div>
-				<div class="row pt-5 pl-5 pr-5">
-
-								   <a class="pr-3" data-toggle="modal" data-target="#exampleModal11" href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#7B8794" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-  <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-</svg></a>
-
-                <a href=""><span class="pr-3"><svg xmlns="http://www.w3.org/2000/svg" id="Twitter" width="40" height="40" viewBox="0 0 40 40">
-  <circle id="Ellipse_22" data-name="Ellipse 22" cx="20" cy="20" r="20" fill="#2daae1"/>
-  <path id="Path_29" data-name="Path 29" d="M257.762,145.789a10.5,10.5,0,0,1-3.022.829,5.277,5.277,0,0,0,2.313-2.911,10.511,10.511,0,0,1-3.342,1.277,5.264,5.264,0,0,0-9.1,3.6,5.321,5.321,0,0,0,.136,1.2,14.939,14.939,0,0,1-10.844-5.5,5.267,5.267,0,0,0,1.628,7.024,5.237,5.237,0,0,1-2.383-.658v.066a5.264,5.264,0,0,0,4.22,5.159,5.234,5.234,0,0,1-1.386.184,5.34,5.34,0,0,1-.99-.093,5.268,5.268,0,0,0,4.914,3.654,10.594,10.594,0,0,1-7.79,2.178,14.962,14.962,0,0,0,23.035-12.6q0-.342-.016-.681A10.72,10.72,0,0,0,257.762,145.789Z" transform="translate(-224.939 -133.745)" fill="#fff"/>
-</svg></a>
-				<p class="pl-5">User Example</p>
-
-			</div>
-
-			   </div>
-
-        </div>
-
-	    <div class="carousel-item  pl-5 pr-5 pt-3  pb-5">
-	        <div class="card pl-5 pr-5 pt-3  pb-5 ">
-	           <div class="row pt-5 pl-5 pr-5">
-
-				   <a class="pr-3"  data-toggle="modal" data-target="#exampleModal12" href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#7B8794" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-  <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-</svg></a>
-                <a href=""><span class="pr-3"><svg xmlns="http://www.w3.org/2000/svg" id="Facebook" width="40" height="40" viewBox="0 0 40 40">
-  <circle id="Ellipse_7" data-name="Ellipse 7" cx="20" cy="20" r="20" fill="#3c5a9a"/>
-  <path id="Path_9" data-name="Path 9" d="M337.926,92.677H333.5c-2.629,0-5.554,1.106-5.554,4.917.013,1.328,0,2.6,0,4.031H324.9v4.84h3.136V120.4H333.8V106.373h3.8l.344-4.762H333.7s.01-2.118,0-2.733c0-1.506,1.567-1.42,1.661-1.42.746,0,2.2,0,2.568,0V92.677h0Z" transform="translate(-311.423 -86.538)" fill="#fff"/>
-</svg></span></a>
-				<p class="pl-5">Email@Example.com</p>
-			</div>
-				<div class="row pt-5 pl-5 pr-5">
-
-								   <a class="pr-3"  data-toggle="modal" data-target="#exampleModal13" href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#7B8794" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-  <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-</svg></a>
-                                   <img src="img/Instgram.png" width="40" height="40" alt=""/>
-<p class="pl-5">Email@Example.com</p>
-
-			</div>
-				<div class="row pt-5 pl-5 pr-5">
-
-								   <a class="pr-3" data-toggle="modal" data-target="#exampleModal14" href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#7B8794" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-  <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-</svg></a>
-
-                <a href=""><span class="pr-3"><svg xmlns="http://www.w3.org/2000/svg" id="Twitter" width="40" height="40" viewBox="0 0 40 40">
-  <circle id="Ellipse_22" data-name="Ellipse 22" cx="20" cy="20" r="20" fill="#2daae1"/>
-  <path id="Path_29" data-name="Path 29" d="M257.762,145.789a10.5,10.5,0,0,1-3.022.829,5.277,5.277,0,0,0,2.313-2.911,10.511,10.511,0,0,1-3.342,1.277,5.264,5.264,0,0,0-9.1,3.6,5.321,5.321,0,0,0,.136,1.2,14.939,14.939,0,0,1-10.844-5.5,5.267,5.267,0,0,0,1.628,7.024,5.237,5.237,0,0,1-2.383-.658v.066a5.264,5.264,0,0,0,4.22,5.159,5.234,5.234,0,0,1-1.386.184,5.34,5.34,0,0,1-.99-.093,5.268,5.268,0,0,0,4.914,3.654,10.594,10.594,0,0,1-7.79,2.178,14.962,14.962,0,0,0,23.035-12.6q0-.342-.016-.681A10.72,10.72,0,0,0,257.762,145.789Z" transform="translate(-224.939 -133.745)" fill="#fff"/>
-</svg></a>
-				<p class="pl-5">User Example</p>
-			</div>
-			   </div>
-  </div>
- 		<a class="carousel-control-prev " href="#carouselExampleIndicators2" role="button" data-slide="prev" > <span class="carousel-control-prev-icon pl-5" aria-hidden="true" ></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true" ></span> <span class="sr-only">Next</span> </a>
+              <a class="carousel-control-prev " href="#carouselExampleIndicators2" role="button" data-slide="prev" > <span class="carousel-control-prev-icon pl-5" aria-hidden="true" ></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true" ></span> <span class="sr-only">Next</span> </a>
 	</div>
 			   </div>
 			</div>
@@ -802,567 +704,17 @@
     </div>
   </div>
 </div>
-        <div class="modal fade" id="exampleModal7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel7" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-		   <div class="row  d-flex justify-content-center " style="font: normal normal bold 24px/45px Cairo; color: #0D67CB">
-
-	<p class="text-center">Edit Contact</p>
-
-	</div>
-
-	 <div class="row pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		<select class="form-control" id="exampleFormControlSelect1" >
-      <option>Select Social Media</option>
-      <option>Facebook</option>
-      <option>Instagram</option>
-      <option>Twitter</option>
-      <option>Snapchat</option>
-    </select>
-
-
-
-	</div>
-		<div class="row mt-3 pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		   <input type="email" class="form-control" placeholder="Enter Email">
-
-
-		  </div>
-
-      </div>
-      <div class="modal-footer pr-5 pt-5 pb-5">
-
-
-       <button type="button" class="btn btn-light">Reset</button>
-
-	   <button type="button" class="btn btn-warning">Save Contact</button>
-
-
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-        <div class="modal fade" id="exampleModal8" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel8" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-		   <div class="row  d-flex justify-content-center " style="font: normal normal bold 24px/45px Cairo; color: #0D67CB">
-
-	<p class="text-center">Edit Contact</p>
-
-	</div>
-
-	 <div class="row pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		<select class="form-control" id="exampleFormControlSelect1" >
-      <option>Select Social Media</option>
-      <option>Facebook</option>
-      <option>Instagram</option>
-      <option>Twitter</option>
-      <option>Snapchat</option>
-    </select>
-
-	</div>
-
-		<div class="row mt-3 pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		   <input type="email" class="form-control" placeholder="Enter Email">
-
-
-		  </div>
-      </div>
-      <div class="modal-footer pr-5 pt-5 pb-5">
-
-
-       <button type="button" class="btn btn-light">Reset</button>
-
-	   <button type="button" class="btn btn-warning">Save Contact</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-        <div class="modal fade" id="exampleModal9" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel9" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-
-
-		   <div class="row  d-flex justify-content-center " style="font: normal normal bold 24px/45px Cairo; color: #0D67CB">
-
-	<p class="text-center">Edit Contact</p>
-
-	</div>
-
-	 <div class="row pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		<select class="form-control" id="exampleFormControlSelect1" >
-      <option>Select Social Media</option>
-      <option>Facebook</option>
-      <option>Instagram</option>
-      <option>Twitter</option>
-      <option>Snapchat</option>
-    </select>
-
-	</div>
-
-		<div class="row mt-3 pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		   <input type="email" class="form-control" placeholder="Enter Email">
-
-
-		  </div>
-
-      </div>
-      <div class="modal-footer pr-5 pt-5 pb-5">
-
-
-       <button type="button" class="btn btn-light">Reset</button>
-
-	   <button type="button" class="btn btn-warning">Save Contact</button>
-
-
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-        <div class="modal fade" id="exampleModal10" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel10" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-
-
-		   <div class="row  d-flex justify-content-center " style="font: normal normal bold 24px/45px Cairo; color: #0D67CB">
-
-	<p class="text-center">Edit Contact</p>
-
-	</div>
-
-	 <div class="row pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		<select class="form-control" id="exampleFormControlSelect1" >
-      <option>Select Social Media</option>
-      <option>Facebook</option>
-      <option>Instagram</option>
-      <option>Twitter</option>
-      <option>Snapchat</option>
-    </select>
-
-	</div>
-
-		<div class="row mt-3 pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		   <input type="email" class="form-control" placeholder="Enter Email">
-
-
-		  </div>
-
-
-
-
-
-
-      </div>
-      <div class="modal-footer pr-5 pt-5 pb-5">
-
-
-       <button type="button" class="btn btn-light">Reset</button>
-
-	   <button type="button" class="btn btn-warning">Save Contact</button>
-
-
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-        <div class="modal fade" id="exampleModal11" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel11" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-
-
-		   <div class="row  d-flex justify-content-center " style="font: normal normal bold 24px/45px Cairo; color: #0D67CB">
-
-	<p class="text-center">Edit Contact</p>
-
-	</div>
-
-
-
-
-
-	 <div class="row pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		<select class="form-control" id="exampleFormControlSelect1" >
-      <option>Select Social Media</option>
-      <option>Facebook</option>
-      <option>Instagram</option>
-      <option>Twitter</option>
-      <option>Snapchat</option>
-    </select>
-
-
-
-	</div>
-
-
-
-		<div class="row mt-3 pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		   <input type="email" class="form-control" placeholder="Enter Email">
-
-
-		  </div>
-
-
-
-
-
-
-      </div>
-      <div class="modal-footer pr-5 pt-5 pb-5">
-
-
-       <button type="button" class="btn btn-light">Reset</button>
-
-	   <button type="button" class="btn btn-warning">Save Contact</button>
-
-
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-        <div class="modal fade" id="exampleModal12" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel12" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-
-
-		   <div class="row  d-flex justify-content-center " style="font: normal normal bold 24px/45px Cairo; color: #0D67CB">
-
-	<p class="text-center">Edit Contact</p>
-
-	</div>
-
-
-
-
-
-	 <div class="row pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		<select class="form-control" id="exampleFormControlSelect1" >
-      <option>Select Social Media</option>
-      <option>Facebook</option>
-      <option>Instagram</option>
-      <option>Twitter</option>
-      <option>Snapchat</option>
-    </select>
-
-
-
-	</div>
-
-
-
-		<div class="row mt-3 pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		   <input type="email" class="form-control" placeholder="Enter Email">
-
-
-		  </div>
-
-
-
-
-
-
-      </div>
-      <div class="modal-footer pr-5 pt-5 pb-5">
-
-
-       <button type="button" class="btn btn-light">Reset</button>
-
-	   <button type="button" class="btn btn-warning">Save Contact</button>
-
-
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-        <div class="modal fade" id="exampleModal13" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel14" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-
-
-		   <div class="row  d-flex justify-content-center " style="font: normal normal bold 24px/45px Cairo; color: #0D67CB">
-
-	<p class="text-center">Edit Contact</p>
-
-	</div>
-
-
-
-
-
-	 <div class="row pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		<select class="form-control" id="exampleFormControlSelect1" >
-      <option>Select Social Media</option>
-      <option>Facebook</option>
-      <option>Instagram</option>
-      <option>Twitter</option>
-      <option>Snapchat</option>
-    </select>
-
-
-
-	</div>
-
-
-
-		<div class="row mt-3 pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		   <input type="email" class="form-control" placeholder="Enter Email">
-
-
-		  </div>
-
-
-
-
-
-
-      </div>
-      <div class="modal-footer pr-5 pt-5 pb-5">
-
-
-       <button type="button" class="btn btn-light">Reset</button>
-
-	   <button type="button" class="btn btn-warning">Save Contact</button>
-
-
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-        <div class="modal fade" id="exampleModal14" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel14" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-
-
-		   <div class="row  d-flex justify-content-center " style="font: normal normal bold 24px/45px Cairo; color: #0D67CB">
-
-	<p class="text-center">Edit Contact</p>
-
-	</div>
-
-
-
-
-
-	 <div class="row pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		<select class="form-control" id="exampleFormControlSelect1" >
-      <option>Select Social Media</option>
-      <option>Facebook</option>
-      <option>Instagram</option>
-      <option>Twitter</option>
-      <option>Snapchat</option>
-    </select>
-
-
-
-	</div>
-
-
-
-		<div class="row mt-3 pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		   <input type="email" class="form-control" placeholder="Enter Email">
-
-
-		  </div>
-
-
-
-
-
-
-      </div>
-      <div class="modal-footer pr-5 pt-5 pb-5">
-
-
-       <button type="button" class="btn btn-light">Reset</button>
-
-	   <button type="button" class="btn btn-warning">Save Contact</button>
-
-
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
 
 		</div>
-
-
-
 		<div class="col-md-6">
-
-
 			<div class="row d-flex justify-content-center">
-
-
-
 					 <button type="button" class="btn btn-outline-primary pl-3 pr-3 font-weight-medium" style="border-width:medium" data-toggle="modal" data-target="#exampleModal1">New Contact</button>
 
 
+<!--Modal For Add Contact AddNewContact-->
+@include('site.includes.newContactModal')
 
-        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-
-
-		   <div class="row  d-flex justify-content-center " style="font: normal normal bold 24px/45px Cairo; color: #0D67CB">
-
-	<p class="text-center">New Contact</p>
-
-	</div>
-
-
-
-
-
-	 <div class="row pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		<select class="form-control" id="exampleFormControlSelect1" >
-      <option>Select Social Media</option>
-      <option>Facebook</option>
-      <option>Instagram</option>
-      <option>Twitter</option>
-      <option>Snapchat</option>
-    </select>
-
-
-
-	</div>
-
-		<div class="row mt-3 pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		   <input type="email" class="form-control" placeholder="Enter Email">
-
-
-		  </div>
-
-
-
-
-
-
-      </div>
-      <div class="modal-footer pr-5 pt-5 pb-5">
-
-
-       <button type="button" class="btn btn-light">Reset</button>
-
-	   <button type="button" class="btn btn-warning">Save Contact</button>
-
-
-
-      </div>
-    </div>
-  </div>
-</div>
-
-			</div>
+            <!--End Modal For Add Contact AddNewContact-->
 
 			<div class="row  pt-3">
 
@@ -2256,7 +1608,13 @@
 	</section>
 
 	</div>
+
+
 <script>
+
+/*
+    Add New Card
+*/
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -2289,6 +1647,52 @@
             }
         });
     });
+
+
+/*
+Add New Contact
+*/
+$(document).on('click', '#saveContact', function(e){
+    e.preventDefault();
+    $('#contact_error').text('');
+
+    var selectedProviderId= $('#provider').find(":selected").val();
+    //console.log(selectedProviderId)
+    var contactName= $('#contactName').val();
+    //console.log(contactName)
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type: 'post',
+        enctype: 'multipart/form-data',
+        url: "{{route('site.contacts.create')}}",
+        data:{
+            contact:contactName,
+            provider_id:selectedProviderId
+        } ,
+        cache: false,
+        success: function (response){
+            if(response.status===true){
+                $('#addContactMsg').show();
+                $('#addContactForm')[0].reset();
+                window.location.href = "{{route('home')}}";
+            }
+        }, error: function (reject){
+            var response = $.parseJSON(reject.responseText);
+            $.each(response.errors, function(key, val){
+                $("#" + key + "_error").text(val[0]);
+            });
+        }
+    });
+});
+
+function resetForm(){
+    $('#addContactForm')[0].reset();
+    }
 </script>
 </body>
 </html>
