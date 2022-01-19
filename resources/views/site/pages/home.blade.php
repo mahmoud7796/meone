@@ -1406,16 +1406,17 @@
 
 <script>
 
-/*
-    Add New Card
-*/
-/*    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });*/
+
+   // Add New Card
+
+
 
     $(document).on('click', '#addContactToCard', function(e){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         e.preventDefault();
         var contactId = $(this).data('id');
      //   var contactIdArray= contactId.split('');
@@ -1559,7 +1560,6 @@ $(document).on('click', '#getDeleteId', function(e){
 
 
 //delete contact
-
 $(document).on('click', '#confirmDelete', function(e){
     e.preventDefault();
     var deleteId= $('#deleteId').val();
@@ -1582,16 +1582,53 @@ $(document).on('click', '#confirmDelete', function(e){
                 window.location.href = "{{route('home')}}";
             }
         },
-
         error: function (reject){
-            var response = $.parseJSON(reject.responseText);
-            $.each(response.errors, function(key, val){
-                $("#" + key + "_edit_error").text(val[0]);
-            });
         }
     });
 });
 
+// add new card
+   $(document).on('click', '#saveCard', function(e){
+       $.ajaxSetup({
+           headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+           }
+       });
+
+           var cardName= $('#cardName').val();
+           console.log(cardName)
+           var contacts = [];
+           $.each($("input[name='contacts']:checked"), function(){
+               contacts.push($(this).val());
+           });
+           console.log(contacts)
+
+       $.ajax({
+           type: 'post',
+           url: "{{route('site.card.create')}}",
+           data:{
+               card:cardName,
+               contactsIds:contacts,
+           } ,
+           cache: false,
+           success: function (response){
+               if(response.status===true){
+                 //  $('#addContactMsg').show();
+                   $('#addCardForm')[0].reset();
+                   $('#checkboxReset')[0].reset();
+                  window.location.href = "{{route('home')}}";
+               }
+           }, error: function (reject){
+               var response = $.parseJSON(reject.responseText);
+               $.each(response.errors, function(key, val){
+                   $("#" + key + "_error").text(val[0]);
+               });
+           }
+       });
+
+
+
+   });
 
 </script>
 </body>

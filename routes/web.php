@@ -3,6 +3,7 @@
 use App\Http\Controllers\Site\Auth\LoginController;
 use App\Http\Controllers\Site\Auth\LogoutController;
 use App\Http\Controllers\Site\Auth\RegisterController;
+use App\Http\Controllers\Site\Pages\CardController;
 use App\Http\Controllers\Site\Pages\ContactController;
 use App\Http\Controllers\Site\Pages\HomeController;
 use App\Http\Controllers\Site\Auth\VerifyEmailController;
@@ -82,6 +83,15 @@ Route::group(['middleware'=>'auth:web'], function(){
 
 ############### End Contacts ####################
 
+############### Cards ####################
+
+Route::group(['middleware'=>'auth:web'], function(){
+    Route::post('/card-store', [CardController::class,'store'])->name('site.card.create');
+
+});
+
+############### End Cards ####################
+
 ############### Providers ####################
 
 Route::group(['middleware'=>'auth:web'], function(){
@@ -94,6 +104,12 @@ Route::group(['middleware'=>'auth:web'], function(){
 Route::get('/get-card', [App\Http\Controllers\HomeController::class, 'getCard'])->name('card');
 
 
-Route::get('/test',function(){
-    return env('APP_URL');
-});
+/*Route::get('/test',function(){
+         $card = \App\Models\Card::find(1);
+
+    $card->  update([
+            'name' => 'firstCard detach',
+            'user_name' =>1,
+        ]);
+    return true;
+});*/
