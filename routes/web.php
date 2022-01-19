@@ -75,7 +75,9 @@ Route::group(['middleware'=>'auth:web'], function(){
     Route::post('/contact-store', [ContactController::class,'sotreInSession'])->name('site.contacts.sotreInSession');
     Route::get('/contact-remove', [ContactController::class,'removeFromSession'])->name('site.contacts.removeFromSession');
     Route::post('/contact-create', [ContactController::class,'create'])->name('site.contacts.create');
-
+    Route::get('/contact-edit/{id}', [ContactController::class,'getContact'])->name('site.contacts.getContact');
+    Route::post('/contact-update/{id}', [ContactController::class,'update'])->name('site.contacts.update');
+    Route::get('/contact-delete/{id}', [ContactController::class,'delete'])->name('site.contacts.delete');
 });
 
 ############### End Contacts ####################

@@ -43,8 +43,6 @@
         @include('site.includes.header')
 
 	<section class="row mb-5 pt-5 mt-5 align-items-center">
-
-
 	     <div class="col-md-6 mt-5 pt-5">
 		 <div class="row">
 				 <div class="col d-flex justify-content-center">
@@ -62,7 +60,7 @@
 
 
       <!-- Modal For Add New Card and Contacts addNewCard-->
-@include('site.includes.newCardModal')
+@include('site.includes.modals.newCardModal')
         <!-- end Modal For Add New Card and Contacts-->
 
     </div>
@@ -328,117 +326,16 @@
 	                <button type="button" class="btn btn-outline-primary btn-sm" id="btn-2">Add</button>
 			</div>
       </div>
-
-
       <div class="modal-footer pr-5 pt-5 pb-5">
-
-
        <button type="button" class="btn btn-light">Reset</button>
-
 	   <button type="button" class="btn btn-warning">Save Card</button>
-
-
 
       </div>
     </div>
   </div>
 </div>
 
-
-
-        <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-		   <div class="row  d-flex justify-content-center " style="font: normal normal bold 24px/45px Cairo; color: #0D67CB">
-
-	<p class="text-center">Edit Card</p>
-
-	</div>
-
-
-			   <div class="row pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-                  <input type="name" class="form-control" placeholder="Card Name">
-
-	</div>
-
-
-
-
-		      	   <div class="row pt-5 d-flex justify-content-center" style="font: normal normal bold 18px/33px Cairo; color: #171717;">
-
-	<p class="text-center">Add a Verified Contact to your Card</p>
-
-	</div>
-
-
-
-		        			<div class="row pt-5 d-flex justify-content-center align-content-center">
-
-                <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#3C5A9A" class="bi bi-facebook" viewBox="0 0 16 16">
-  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-</svg></a>
-
-				<p class="pl-5 pt-2 pr-5">Email@Example.com</p>
-
-	                <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-2">Remove</button>
-
-			</div>
-
-
-
-
-		        			<div class="row pt-5 d-flex justify-content-center align-content-center">
-
-                <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#3C5A9A" class="bi bi-facebook" viewBox="0 0 16 16">
-  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-</svg></a>
-
-				<p class="pl-5 pt-2 pr-5">Email@Example.com</p>
-
-	                <button type="button" class="btn btn-outline-primary btn-sm" id="btn-2">Add</button>
-
-			</div>
-
-
-
-
-		        			<div class="row pt-5 d-flex justify-content-center align-content-center">
-
-                <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#3C5A9A" class="bi bi-facebook" viewBox="0 0 16 16">
-  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-</svg></a>
-
-				<p class="pl-5 pt-2 pr-5">Email@Example.com</p>
-
-	                <button type="button" class="btn btn-outline-primary btn-sm" id="btn-2">Add</button>
-
-			</div>
-
-
-
-      </div>
-      <div class="modal-footer pr-5 pt-5 pb-5">
-
-
-       <button type="button" class="btn btn-light">Reset</button>
-
-	   <button type="button" class="btn btn-warning">Save Card</button>
-
-
-
-      </div>
-    </div>
-  </div>
-</div>
-
+@include('site.includes.modals.deleteConfirmationModal')
 
         <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel5" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -625,21 +522,28 @@
 		   <div class="carousel-item pl-5 pr-5 pt-3 pb-5 {{$index == 0 ? 'active':''}}">
 	        <div class="card pl-5 pr-5 pt-3  pb-5 ">
 	           <div class="row pt-5 pl-5 pr-5">
+<div>
+                   <a id="getContact" data-id="{{$contact->id}}" class="pr-3"  data-toggle="modal" data-target="#exampleModal2" href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#7B8794" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                           <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                       </svg>
+                   </a><br>
 
+                   <a class="pr-3" id="getDeleteId" data-id="{{$contact->id}}"  data-toggle="modal" data-target="#modaldelete-1" href="">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#7B8794" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                       <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path>
+                   </svg>
+                   </a>
+</div>
 
-				   <a class="pr-3"  data-toggle="modal" data-target="#exampleModal6" href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#7B8794" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-  <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-</svg></a>
+                   <div style="width: 50px;height: 50px">
+                       <img width="100%" height="100%" src="{{$contact->provider->imgURL}}" alt="face">
+                   </div>
 
-                <a href=""><span class="pr-3"><svg xmlns="http://www.w3.org/2000/svg" id="Facebook" width="40" height="40" viewBox="0 0 40 40">
   <circle id="Ellipse_7" data-name="Ellipse 7" cx="20" cy="20" r="20" fill="#3c5a9a"/>
   <path id="Path_9" data-name="Path 9" d="M337.926,92.677H333.5c-2.629,0-5.554,1.106-5.554,4.917.013,1.328,0,2.6,0,4.031H324.9v4.84h3.136V120.4H333.8V106.373h3.8l.344-4.762H333.7s.01-2.118,0-2.733c0-1.506,1.567-1.42,1.661-1.42.746,0,2.2,0,2.568,0V92.677h0Z" transform="translate(-311.423 -86.538)" fill="#fff"/>
 </svg></span></a>
 
 				<p class="pl-5">{{$contact->contact_string}}</p>
-
-
-
 			</div>
             </div>
 		  </div>
@@ -648,72 +552,30 @@
               <div class="carousel-item pl-5 pr-5 pt-3 pb-5 active">
                   <div class="card pl-5 pr-5 pt-3  pb-5 ">
                       <div class="row pt-5 pl-5 pr-5">
-                          <p class="pl-5">You do not added any contacts</p>
+                          <p class="pl-5">You do not have any contacts yet</p>
                       </div>
                   </div>
               </div>
           @endif
 
+          @include('site.includes.modals.deleteConfirmationModal')
 
               <a class="carousel-control-prev " href="#carouselExampleIndicators2" role="button" data-slide="prev" > <span class="carousel-control-prev-icon pl-5" aria-hidden="true" ></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true" ></span> <span class="sr-only">Next</span> </a>
 	</div>
 			   </div>
 			</div>
 
-        <div class="modal fade" id="exampleModal6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel6" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+        {{-- Edit contact editContact--}}
+@include('site.includes.modals.editContactModal')
+        {{-- end Edit contact editContact--}}
 
-		   <div class="row  d-flex justify-content-center " style="font: normal normal bold 24px/45px Cairo; color: #0D67CB">
-
-	<p class="text-center">Edit Contact</p>
-
-	</div>
-	 <div class="row pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		<select class="form-control" id="exampleFormControlSelect1" >
-      <option>Select Social Media</option>
-      <option>Facebook</option>
-      <option>Instagram</option>
-      <option>Twitter</option>
-      <option>Snapchat</option>
-    </select>
-	</div>
-
-		<div class="row mt-3 pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-		   <input type="email" class="form-control" placeholder="Enter Email">
-
-
-		  </div>
-      </div>
-      <div class="modal-footer pr-5 pt-5 pb-5">
-
-
-       <button type="button" class="btn btn-light">Reset</button>
-
-	   <button type="button" class="btn btn-warning">Save Contact</button>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-		</div>
 		<div class="col-md-6">
 			<div class="row d-flex justify-content-center">
 					 <button type="button" class="btn btn-outline-primary pl-3 pr-3 font-weight-medium" style="border-width:medium" data-toggle="modal" data-target="#exampleModal1">New Contact</button>
 
 
 <!--Modal For Add Contact AddNewContact-->
-@include('site.includes.newContactModal')
-
+@include('site.includes.modals.newContactModal')
             <!--End Modal For Add Contact AddNewContact-->
 
 			<div class="row  pt-3">
@@ -957,38 +819,19 @@
   </g>
 </svg>
 				<p class="pl-5">Email@Example.com</p>
-
-
-
 			</div>
-
 				<div class="row pt-5 pl-5 pr-5">
-
 			 <a class="pr-3 "data-toggle="modal" data-target="#exampleModal23" href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#7B8794" class="bi bi-pencil-fill" viewBox="0 0 16 16">
   <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
 </svg></a>
 
                                    <img src="img/WhatsApp.png" width="40" height="40" alt=""/>
 <p class="pl-5">User Example</p>
-
-
-
 			</div>
-
-
-
 			   </div>
-
-
   </div>
-
  		<a class="carousel-control-prev " href="#carouselExampleIndicators3" role="button" data-slide="prev" > <span class="carousel-control-prev-icon pl-5" aria-hidden="true" ></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true" ></span> <span class="sr-only">Next</span> </a>
-
-
 	</div>
-
-
-
         <div class="modal fade" id="exampleModal15" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel15" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -1462,9 +1305,6 @@
   </div>
 </div>
 
-
-
-
         <div class="modal fade" id="exampleModal22" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel22" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -1474,21 +1314,10 @@
         </button>
       </div>
       <div class="modal-body">
-
-
-
 		   <div class="row  d-flex justify-content-center " style="font: normal normal bold 24px/45px Cairo; color: #0D67CB">
-
 	<p class="text-center">Edit Contact</p>
-
 	</div>
-
-
-
-
-
 	 <div class="row pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
 		<select class="form-control" id="exampleFormControlSelect1" >
       <option>Select Social Media</option>
       <option>Facebook</option>
@@ -1496,34 +1325,14 @@
       <option>Twitter</option>
       <option>Snapchat</option>
     </select>
-
-
-
 	</div>
-
-
-
 		<div class="row mt-3 pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
 		   <input type="email" class="form-control" placeholder="Enter Email">
-
-
 		  </div>
-
-
-
-
-
-
       </div>
       <div class="modal-footer pr-5 pt-5 pb-5">
-
-
        <button type="button" class="btn btn-light">Reset</button>
-
 	   <button type="button" class="btn btn-warning">Save Contact</button>
-
-
 
       </div>
     </div>
@@ -1564,25 +1373,10 @@
       <option>Twitter</option>
       <option>Snapchat</option>
     </select>
-
-
-
 	</div>
-
-
-
 		<div class="row mt-3 pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
 		   <input type="email" class="form-control" placeholder="Enter Email">
-
-
 		  </div>
-
-
-
-
-
-
       </div>
       <div class="modal-footer pr-5 pt-5 pb-5">
 
@@ -1615,11 +1409,12 @@
 /*
     Add New Card
 */
-    $.ajaxSetup({
+/*    $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-    });
+    });*/
+
     $(document).on('click', '#addContactToCard', function(e){
         e.preventDefault();
         var contactId = $(this).data('id');
@@ -1649,17 +1444,15 @@
     });
 
 
-/*
-Add New Contact
-*/
+
+//Add New Contact
+
 $(document).on('click', '#saveContact', function(e){
     e.preventDefault();
     $('#contact_error').text('');
 
     var selectedProviderId= $('#provider').find(":selected").val();
-    //console.log(selectedProviderId)
     var contactName= $('#contactName').val();
-    //console.log(contactName)
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1693,6 +1486,113 @@ $(document).on('click', '#saveContact', function(e){
 function resetForm(){
     $('#addContactForm')[0].reset();
     }
+
+
+//get specific Contact getContactId
+
+$('body').on('click', '#getContact', function (event) {
+    event.preventDefault();
+    var contact_id = $(this).data('id');
+    $.get('contact-edit/' + contact_id, function (data) {
+        var providerId = data.provider_id;
+        $('#contactNameEdit').val(data.contact_string);
+        $('#contactId').val(data.id);
+        $("#providerEdit").children('[value="' + providerId +'"]').attr('selected', true);
+    })
+});
+
+
+//update specific Contact updateContact
+
+$(document).on('click', '#updateContact', function(e){
+    e.preventDefault();
+    $('#contact_edit_error').text('');
+
+    var selectedProviderId= $('#providerEdit').find(":selected").val();
+    var contactName= $('#contactNameEdit').val();
+    var contactId= $('#contactId').val();
+
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type: 'post',
+        url: "{{url('/contact-update')}}" +'/'+ contactId,
+        data: {
+            contact:contactName,
+            provider_id:selectedProviderId
+        },
+        cache: false,
+        success: function (response){
+            if(response.status===true){
+                $('#editContactMsg').show();
+                window.location.href = "{{route('home')}}";
+            }
+        },
+
+        error: function (reject){
+            var response = $.parseJSON(reject.responseText);
+            $.each(response.errors, function(key, val){
+                $("#" + key + "_edit_error").text(val[0]);
+            });
+        }
+    });
+});
+
+
+
+
+//get deleteId Contact getDeleteId
+
+$(document).on('click', '#getDeleteId', function(e){
+    event.preventDefault();
+    var contact_id = $(this).data('id');
+    $.get('contact-edit/' + contact_id, function (data) {
+        $('#deleteId').val(data.id);
+        //console.log( $('#deleteId').val())
+    })
+});
+
+
+//delete contact
+
+$(document).on('click', '#confirmDelete', function(e){
+    e.preventDefault();
+    var deleteId= $('#deleteId').val();
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type: 'get',
+        url: "{{url('/contact-delete')}}" +'/'+ deleteId,
+        data: {
+        },
+        cache: false,
+        success: function (response){
+            if(response.status===true){
+                $('#deleteContactMsg').show();
+                window.location.href = "{{route('home')}}";
+            }
+        },
+
+        error: function (reject){
+            var response = $.parseJSON(reject.responseText);
+            $.each(response.errors, function(key, val){
+                $("#" + key + "_edit_error").text(val[0]);
+            });
+        }
+    });
+});
+
+
 </script>
 </body>
 </html>

@@ -25,7 +25,7 @@
                     </select>
                 </div>
                     <div class="row mt-3 pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-                        <input id="contactName" name="contact" type="email" class="form-control" placeholder="Enter Your Contact">
+                        <input id="contactName" name="contact" type="text" class="form-control" placeholder="Enter Your Contact">
                         <small id="contact_error" class="form-text text-danger"></small>
                     </div>
                 </form>
