@@ -21,8 +21,7 @@ class CardController extends Controller
             'user_id' => $userId,
         ]);
 
-$contacts = $request->contactsIds;
-
+     $contacts = $request->contactsIds;
         if($contacts){
             for ($i=0;$i<count($contacts);$i++){
                 CardContact::create([
@@ -33,18 +32,37 @@ $contacts = $request->contactsIds;
         }else{
             return response()->json([
                 'status' => true,
-                'msg' => 'Card added successfully else foreach',
+                'msg' => 'Card added successfully',
             ]);
         }
-
         return response()->json([
             'status' => true,
-            'msg' => 'Card added successfully last res',
+            'msg' => 'Card added successfully',
         ]);
     }
 
 
-    public function update(ContactRequest $request, $id){
+    public function edit($id)
+    {
+        $userId= Auth::id();
+        $card= Card::find($id);
+      //  $contactsThatInCard= Card::whereUserId($userId)->whereId($id)->with('contact:id')->first();
+        $contactsId =  $contactsThatInCard->contact;
+        $contactids = array();
+
+          foreach($contactsId as $contactId) {
+              $contactids[]=$contactId->id;
+        }
+
+       return response()->json([
+            'card' => $card,
+            'contactsThatInCard' => $contactids,
+               'status' => true
+            ]
+        );
+    }
+
+    public function update(CardRequest $request, $id){
         $userId= Auth::id();
         $contact = Contact::find($id);
         if (!$contact)
@@ -63,6 +81,8 @@ $contacts = $request->contactsIds;
             'status' => true,
         ]);
     }
+
+
 
     public function delete($id)
     {

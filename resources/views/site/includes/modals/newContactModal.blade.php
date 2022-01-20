@@ -11,7 +11,8 @@
                     <button type="text" class="btn btn-lg btn-block btn-outline-success mb-2"
                             id="type-error">Your Contact Added Successfully
                     </button>
-                </div>                <div class="row  d-flex justify-content-center " style="font: normal normal bold 24px/45px Cairo; color: #0D67CB">
+                </div>
+                <div class="row  d-flex justify-content-center " style="font: normal normal bold 24px/45px Cairo; color: #0D67CB">
                     <p class="text-center">New Contact</p>
                 </div>
                 <form id="addContactForm">

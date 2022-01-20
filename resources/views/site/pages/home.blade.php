@@ -70,50 +70,48 @@
 			 </div>
 
 
-
 			 <div class="row">
 				 <div class="col-md-10">
 		<div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
 	  <ol class="carousel-indicators">
-	    <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
-	    <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
-	    <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+          @if(isset($cards) && $cards->count()>0)
+              @foreach($cards as $index => $card)
+	    <li data-target="#carouselExampleIndicators1" data-slide-to="{{$index}}" class="{{$index == 0 ? 'active':''}}"></li>
+              @endforeach
+          @endif
   </ol>
+
+<!--            carousel shows Cards carouselCard-->
+
 	  <div class="carousel-inner text-center" role="listbox">
-	 <div class="carousel-item pl-5 pr-5 pt-3 pb-5 active">
+
+          @if(isset($cards) && $cards->count()>0)
+              @foreach($cards as $index => $card)
+	 <div class="carousel-item pl-5 pr-5 pt-3 pb-5 {{$index == 0 ? 'active':''}}">
 	        <div class="card pl-5 pr-5 pt-3  pb-5 ">
 	      <div class="row align-items-center" id="row1">
 		<div class="col col-md-8 " id="col2">
-
 			<div class="row pt-5 pb-5 pl-5  ">
-		<p class="" style="color: #FBFBFB">Card Name</p>
-
+		<p class="" style="color: #FBFBFB">{{$card->name}}</p>
 			</div>
-
 			<div class="row">
-
 		     	<div class="col pl-5">
-
 			<div class="row ">
 			<button type="button" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
   <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
 </svg> share </button>
 				</div>
 		   <div class="row ">
-		    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+
+		    <button id="editCard" data-id="{{$card->id}}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
   <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
 </svg> edit</button>
 				</div>
 				</div>
-
 				<div class="col pl-5 ">
-
 						<div class="row">
-
 					   <p class=" pl-3 pr-4"  style="color: #FBFBFB">Opened</p>
-
 					</div>
-
 					<div class="row">
 						<p class="pl-5" style="color: #FBFBFB">2</p>
 
@@ -123,12 +121,10 @@
 
 					<div class="row">
 
-					   <p class=" pl-3 pr-4"  style="color: #FBFBFB">Added</p>
-
+					   <p class=" pl-3 pr-4"  style="color: #FBFBFB">Contacts which added</p>
 					</div>
 					<div class="row">
-						<p class="pl-5" style="color: #FBFBFB">3</p>
-
+						<p class="pl-5" style="color: #FBFBFB">{{$card->contact_count}}</p>
 					</div>
 				</div>
 			</div>
@@ -140,198 +136,37 @@
 			</div>
 			   </div>
 		  </div>
+              @endforeach
+          @else
+              <div class="carousel-item pl-5 pr-5 pt-3 pb-5 active">
+                  <div class="card pl-5 pr-5 pt-3  pb-5 ">
+                      <div class="row align-items-center" id="row1">
+                          <div class="col col-md-8 " id="col2">
+                              <div class="row pt-5 pb-5 pl-5  ">
+                                  <h3 class="" style="color: #FBFBFB">You have no cards</h3>
+                              </div>
+                          </div>
 
-	    <div class="carousel-item pl-5 pr-5 pt-3 pb-5">
-	        <div class="card pl-5 pr-5 pt-3  pb-5 ">
-	      <div class="row align-items-center" id="row1">
-		<div class="col col-md-8 " id="col2">
-			<div class="row pt-5 pb-5 pl-5  ">
-		<p class="" style="color: #FBFBFB">Card Name</p>
-			</div>
+                          <div class="col col-md-4">
+                              <img class="" src="{{asset('assets/img/qr-code 3.png')}}" width="84" height="84" alt=""/>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              @endif
 
-			<div class="row">
-
-		     	<div class="col pl-5">
-
-			<div class="row ">
-			<button type="button" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
-  <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
-</svg> share </button>
-				</div>
-		   <div class="row ">
-		    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-  <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-</svg> edit</button>
-
-
-
-
-				</div>
-
-				</div>
-
-
-				<div class="col pl-5 ">
-
-						<div class="row">
-
-					   <p class=" pl-3 pr-4"  style="color: #FBFBFB">Opened</p>
-
-					</div>
-
-					<div class="row">
-
-
-						<p class="pl-5" style="color: #FBFBFB">2</p>
-
-
-
-					</div>
-
-				</div>
-
-			    <div class="col pl-5 ">
-
-					<div class="row">
-
-					   <p class=" pl-3 pr-4"  style="color: #FBFBFB">Added</p>
-
-					</div>
-					<div class="row">
-						<p class="pl-5" style="color: #FBFBFB">3</p>
-
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col col-md-4">
-			 <img class="" src="img/qr-code 3.png" width="84" height="84" alt=""/>
-		</div>
-			</div>
-			   </div>
-        </div>
-	    <div class="carousel-item  pl-5 pr-5 pt-3  pb-5">
-	        <div class="card pl-5 pr-5 pt-3  pb-5 ">
-	      <div class="row align-items-center" id="row1">
-		<div class="col col-md-8 " id="col2">
-			<div class="row pt-5 pb-5 pl-5  ">
-
-		<p class="" style="color: #FBFBFB">Card Name</p>
-			</div>
-			<div class="row">
-		     	<div class="col pl-5">
-			<div class="row ">
-			<button type="button" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
-  <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
-</svg> share </button>
-				</div>
-		   <div class="row ">
-		    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-  <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-</svg> edit</button>
-				</div>
-				</div>
-
-				<div class="col pl-5 ">
-						<div class="row">
-					   <p class=" pl-3 pr-4"  style="color: #FBFBFB">Opened</p>
-					</div>
-					<div class="row">
-						<p class="pl-5" style="color: #FBFBFB">2</p>
-					</div>
-
-				</div>
-
-			    <div class="col pl-5 ">
-					<div class="row">
-					   <p class=" pl-3 pr-4"  style="color: #FBFBFB">Added</p>
-					</div>
-					<div class="row">
-						<p class="pl-5" style="color: #FBFBFB">3</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col col-md-4">
-			 <img class="" src="{{asset('assets/img/qr-code 3.png')}}" width="84" height="84" alt=""/>
-		</div>
-			</div>
-			   </div>
-  </div>
- 		<a class="carousel-control-prev " href="#carouselExampleIndicators1" role="button" data-slide="prev" > <span class="carousel-control-prev-icon pl-5" aria-hidden="true" ></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true" ></span> <span class="sr-only">Next</span> </a>
+              <a class="carousel-control-prev " href="#carouselExampleIndicators1" role="button" data-slide="prev" > <span class="carousel-control-prev-icon pl-5" aria-hidden="true" ></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true" ></span> <span class="sr-only">Next</span> </a>
 	</div>
 			   </div>
 				 </div>
 				 </div>
+
 
        <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
 
-		   <div class="row  d-flex justify-content-center " style="font: normal normal bold 24px/45px Cairo; color: #0D67CB">
+@include('site.includes.modals.editCardModal')
 
-	<p class="text-center">Edit Card</p>
-
-	</div>
-			   <div class="row pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
-
-                  <input type="name" class="form-control" placeholder="Card Name">
-
-	</div>
-		      	   <div class="row pt-5 d-flex justify-content-center" style="font: normal normal bold 18px/33px Cairo; color: #171717;">
-
-	<p class="text-center">Add a Verified Contact to your Card</p>
-
-	</div>
-
-
-
-		        			<div class="row pt-5 d-flex justify-content-center align-content-center">
-                <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#3C5A9A" class="bi bi-facebook" viewBox="0 0 16 16">
-  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-</svg></a>
-				<p class="pl-5 pt-2 pr-5">Email@Example.com</p>
-	                <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-2">Remove</button>
-			</div>
-
-		        			<div class="row pt-5 d-flex justify-content-center align-content-center">
-
-                <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#3C5A9A" class="bi bi-facebook" viewBox="0 0 16 16">
-  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-</svg></a>
-
-				<p class="pl-5 pt-2 pr-5">Email@Example.com</p>
-
-	                <button type="button" class="btn btn-outline-primary btn-sm" id="btn-2">Add</button>
-
-			</div>
-
-
-
-
-		        			<div class="row pt-5 d-flex justify-content-center align-content-center">
-
-                <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#3C5A9A" class="bi bi-facebook" viewBox="0 0 16 16">
-  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-</svg></a>
-
-				<p class="pl-5 pt-2 pr-5">Email@Example.com</p>
-
-	                <button type="button" class="btn btn-outline-primary btn-sm" id="btn-2">Add</button>
-			</div>
-      </div>
-      <div class="modal-footer pr-5 pt-5 pb-5">
-       <button type="button" class="btn btn-light">Reset</button>
-	   <button type="button" class="btn btn-warning">Save Card</button>
-
-      </div>
-    </div>
   </div>
 </div>
 
@@ -515,6 +350,7 @@
       </ol>
 
 <!--  Carousel For show Contacts showCarouselContacts-->
+
 	  <div class="carousel-inner text-center" role="listbox">
 
            @if(isset($contacts) && $contacts->count()>0)
@@ -1406,46 +1242,6 @@
 
 <script>
 
-
-   // Add New Card
-
-
-
-    $(document).on('click', '#addContactToCard', function(e){
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        e.preventDefault();
-        var contactId = $(this).data('id');
-     //   var contactIdArray= contactId.split('');
-       // console.log(contactIdArray)
-        $.ajax({
-            type: 'post',
-            url: "{{route('site.contacts.sotreInSession')}}",
-            data: {
-                contactId:contactId,
-            },
-            cache: false,
-            success: function (response){
-                if(response.status===true){
-                  //  var contactId = $('#addContactToCard').find('id');
-                  //  $("#addContactToCard").find(`[id='${current}']`)
-                    //$('#btn2').show();
-                    $(e.target).addClass('d-none');
-                    $(e.target).next('#removeContactFromCard').removeClass('d-none');
-                    $('#btn2').show();
-
-                }
-            }, error: function (reject){
-
-            }
-        });
-    });
-
-
-
 //Add New Contact
 
 $(document).on('click', '#saveContact', function(e){
@@ -1508,7 +1304,6 @@ $('body').on('click', '#getContact', function (event) {
 $(document).on('click', '#updateContact', function(e){
     e.preventDefault();
     $('#contact_edit_error').text('');
-
     var selectedProviderId= $('#providerEdit').find(":selected").val();
     var contactName= $('#contactNameEdit').val();
     var contactId= $('#contactId').val();
@@ -1550,11 +1345,11 @@ $(document).on('click', '#updateContact', function(e){
 //get deleteId Contact getDeleteId
 
 $(document).on('click', '#getDeleteId', function(e){
+    $('#contact_error').text('');
     event.preventDefault();
     var contact_id = $(this).data('id');
     $.get('contact-edit/' + contact_id, function (data) {
         $('#deleteId').val(data.id);
-        //console.log( $('#deleteId').val())
     })
 });
 
@@ -1587,21 +1382,22 @@ $(document).on('click', '#confirmDelete', function(e){
     });
 });
 
+
 // add new card
+
    $(document).on('click', '#saveCard', function(e){
        $.ajaxSetup({
            headers: {
                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
            }
        });
+       $('#card_error').text('');
 
            var cardName= $('#cardName').val();
-           console.log(cardName)
            var contacts = [];
-           $.each($("input[name='contacts']:checked"), function(){
+           $.each($("input[name='contactsCheckbox']:checked"), function(){
                contacts.push($(this).val());
            });
-           console.log(contacts)
 
        $.ajax({
            type: 'post',
@@ -1609,14 +1405,16 @@ $(document).on('click', '#confirmDelete', function(e){
            data:{
                card:cardName,
                contactsIds:contacts,
-           } ,
+           },
            cache: false,
            success: function (response){
                if(response.status===true){
-                 //  $('#addContactMsg').show();
+                   $('#addCardMsg').show();
                    $('#addCardForm')[0].reset();
-                   $('#checkboxReset')[0].reset();
-                  window.location.href = "{{route('home')}}";
+                   $('input[name="contactsCheckbox"]').each(function() {
+                       this.checked = false;
+                   });
+                   window.location.href = "{{route('home')}}";
                }
            }, error: function (reject){
                var response = $.parseJSON(reject.responseText);
@@ -1625,10 +1423,47 @@ $(document).on('click', '#confirmDelete', function(e){
                });
            }
        });
-
-
-
    });
+
+   function resetNewCard(){
+       $('#addCardForm')[0].reset();
+
+       $('input[name="contactsCheckbox"]').each(function() {
+           this.checked = false;
+       });
+   }
+
+
+   //get specific Card getCardId
+   $(document).on('click', '#editCard', function(e){
+       event.preventDefault();
+       var card_id = $(this).data('id');
+       console.log(card_id)
+       $.get('card-edit/' + card_id, function (data) {
+
+           console.log(data.contactsThatInCard)
+            $('#EditcardName').val(data.card.name);
+            $('#cardId').val(card_id);
+
+      //     $('input:checkbox:checked:visible:eq(0)').val();
+
+/*           $('input[name="contactsCheckboxEdit"]').each(function() {
+               if(jQuery.inArray($(this).val(), data.contactsThatInCard) !== -1){
+                   console.log($(this).val())
+                   $("#providerEdit").children('[value="' + providerId +'"]').attr('selected', true);
+
+               }
+           })*/
+
+           $('input[name="contactsCheckboxEdit"]').each(function() {
+               if(jQuery.inArray(this.value, data.contactsThatInCard) !== -1) {
+                   this.checked = true;
+               }
+           });
+
+           })
+   });
+
 
 </script>
 </body>

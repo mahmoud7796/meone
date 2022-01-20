@@ -17,7 +17,6 @@ class CreateCardsTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('user_id')->unsigned();
-            $table->rememberToken();
             $table->timestamps();
         });
     }

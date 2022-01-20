@@ -57,7 +57,7 @@ class ContactController extends Controller
         ]);
     }
 
-    public function getContact($id)
+    public function edit($id)
     {
         $contact= Contact::find($id);
         return response()->json($contact);

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Contact;
+use App\Observers\ContactObserver;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 

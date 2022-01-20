@@ -26,7 +26,7 @@ class Card extends Model
 
     public function connection()
     {
-        return $this->belongsTo(Connection::class, '');
+        return $this->belongsTo(Connection::class, );
     }
 
     protected static function boot()

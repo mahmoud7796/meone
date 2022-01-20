@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\ContactObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -30,4 +31,11 @@ class Contact extends Model
     public function provider(){
         return $this->belongsTo(Provider::class,'provider_id');
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+        Contact::observe(ContactObserver::class);
+    }
+
 }

@@ -32,8 +32,8 @@ class HomeController extends Controller
         $userId = Auth::id();
         $contacts = Contact::whereUserId($userId)->get();
         $providers = Provider::get();
-
-        return view('site.pages.home',compact('contacts','providers'));
+        $cards= Card::whereUserId($userId)->withCount(['contact'])->get();
+        return view('site.pages.home',compact('contacts','providers','cards'));
     }
 
     public function getCard()
