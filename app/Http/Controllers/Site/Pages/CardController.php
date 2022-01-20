@@ -46,7 +46,7 @@ class CardController extends Controller
     {
         $userId= Auth::id();
         $card= Card::find($id);
-      //  $contactsThatInCard= Card::whereUserId($userId)->whereId($id)->with('contact:id')->first();
+        $contactsThatInCard= Card::whereUserId($userId)->whereId($id)->with('contact:id')->first();
         $contactsId =  $contactsThatInCard->contact;
         $contactids = array();
 
