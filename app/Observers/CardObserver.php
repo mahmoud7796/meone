@@ -6,10 +6,8 @@ use App\Models\Card;
 
 class CardObserver
 {
-    public function updated(Card $card)
+    public function deleted(Card $card)
     {
-        $card -> contact()->detach();
+        $card->contact()->detach();
     }
-
-
 }

@@ -8,6 +8,9 @@ use App\Models\Card;
 use App\Models\CardContact;
 use App\Models\Contact;
 use Auth;
+use http\Env\Response;
+use SebastianBergmann\Diff\Exception;
+use DB;
 
 class CardController extends Controller
 {
@@ -49,7 +52,6 @@ class CardController extends Controller
         $contactsThatInCard= Card::whereUserId($userId)->whereId($id)->with('contact:id')->first();
         $contactsId =  $contactsThatInCard->contact;
         $contactids = array();
-
           foreach($contactsId as $contactId) {
               $contactids[]=$contactId->id;
         }
@@ -62,32 +64,53 @@ class CardController extends Controller
         );
     }
 
-    public function update(CardRequest $request, $id){
-        $userId= Auth::id();
-        $contact = Contact::find($id);
-        if (!$contact)
-            return response()->json([
-                'status' => false,
-                'msg' => 'SomeThing Error Try Again',
-            ]);
-        else
-            $contact->update([
-                'contact_string' => $request->contact,
-                'provider_id' => $request->provider_id,
+
+    public function update(CardRequest $request)
+    {
+        try {
+            $userId= Auth::id();
+            $card = Card::whereUserId($userId)->find($request->card_id);
+            if($userId!==$card->user_id) {
+                return redirect()->back();
+            }
+            $card->contact()->detach();
+            DB::beginTransaction();
+            $card->update([
+                'name' => $request->card,
                 'user_id' => $userId,
             ]);
 
-        return response()->json([
-            'status' => true,
-        ]);
-    }
+            $contacts = $request->contactsIds;
+            if($contacts){
+                for ($i=0;$i<count($contacts);$i++){
+                    CardContact::create([
+                        'contact_id' => $contacts[$i],
+                        'card_id' => $card->id
+                    ]);
+                }
+            }else{
+                return response()->json([
+                    'status' => true,
+                    'msg' => 'Card added successfully',
+                ]);
+            }
+            DB::commit();
+            return response()->json([
+                'status' => true,
+                'msg' => 'Card added successfully',
+            ]);
 
+        }catch (Exception $ex){
+            DB::rollback();
+            return $ex;
+        }
+    }
 
 
     public function delete($id)
     {
-        $contact= Contact::find($id);
-        $contact->delete();
+        $card= Card::find($id);
+        $card->delete();
         return response()->json([
             'status' => true,
         ]);

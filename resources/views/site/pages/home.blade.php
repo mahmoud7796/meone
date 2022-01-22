@@ -105,7 +105,10 @@
 
 		    <button id="editCard" data-id="{{$card->id}}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
   <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-</svg> edit</button>
+</svg> Edit</button>
+               <button id="deleteCardId" data-id="{{$card->id}}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaldelete-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                       <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path>
+                   </svg>Delete</button>
 				</div>
 				</div>
 				<div class="col pl-5 ">
@@ -113,7 +116,7 @@
 					   <p class=" pl-3 pr-4"  style="color: #FBFBFB">Opened</p>
 					</div>
 					<div class="row">
-						<p class="pl-5" style="color: #FBFBFB">2</p>
+						<p class="pl-5" style="color: #FBFBFB">0</p>
 
 					</div>
 				</div>
@@ -170,7 +173,16 @@
   </div>
 </div>
 
-@include('site.includes.modals.deleteConfirmationModal')
+        <div class="modal fade" id="modaldelete-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+
+                @include('site.includes.modals.deleteCardConfirmationModal')
+
+            </div>
+        </div>
+
+
+        @include('site.includes.modals.deleteContactConfirmationModal')
 
         <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel5" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -393,9 +405,6 @@
                   </div>
               </div>
           @endif
-
-          @include('site.includes.modals.deleteConfirmationModal')
-
               <a class="carousel-control-prev " href="#carouselExampleIndicators2" role="button" data-slide="prev" > <span class="carousel-control-prev-icon pl-5" aria-hidden="true" ></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true" ></span> <span class="sr-only">Next</span> </a>
 	</div>
 			   </div>
@@ -1246,6 +1255,7 @@
 
 $(document).on('click', '#saveContact', function(e){
     e.preventDefault();
+    $("#saveContact").attr("disabled", true);
     $('#contact_error').text('');
 
     var selectedProviderId= $('#provider').find(":selected").val();
@@ -1272,6 +1282,7 @@ $(document).on('click', '#saveContact', function(e){
                 window.location.href = "{{route('home')}}";
             }
         }, error: function (reject){
+            $("#saveContact").attr("disabled", false);
             var response = $.parseJSON(reject.responseText);
             $.each(response.errors, function(key, val){
                 $("#" + key + "_error").text(val[0]);
@@ -1303,6 +1314,7 @@ $('body').on('click', '#getContact', function (event) {
 
 $(document).on('click', '#updateContact', function(e){
     e.preventDefault();
+    $("#updateContact").attr("disabled", true);
     $('#contact_edit_error').text('');
     var selectedProviderId= $('#providerEdit').find(":selected").val();
     var contactName= $('#contactNameEdit').val();
@@ -1331,6 +1343,7 @@ $(document).on('click', '#updateContact', function(e){
         },
 
         error: function (reject){
+            $("#updateContact").attr("disabled", false);
             var response = $.parseJSON(reject.responseText);
             $.each(response.errors, function(key, val){
                 $("#" + key + "_edit_error").text(val[0]);
@@ -1345,18 +1358,16 @@ $(document).on('click', '#updateContact', function(e){
 //get deleteId Contact getDeleteId
 
 $(document).on('click', '#getDeleteId', function(e){
-    $('#contact_error').text('');
     event.preventDefault();
     var contact_id = $(this).data('id');
-    $.get('contact-edit/' + contact_id, function (data) {
-        $('#deleteId').val(data.id);
-    })
+        $('#deleteId').val(contact_id);
 });
 
 
 //delete contact
 $(document).on('click', '#confirmDelete', function(e){
     e.preventDefault();
+    $("#confirmDelete").attr("disabled", true);
     var deleteId= $('#deleteId').val();
 
     $.ajaxSetup({
@@ -1386,6 +1397,7 @@ $(document).on('click', '#confirmDelete', function(e){
 // add new card
 
    $(document).on('click', '#saveCard', function(e){
+       $("#saveCard").attr("disabled", true);
        $.ajaxSetup({
            headers: {
                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1414,9 +1426,11 @@ $(document).on('click', '#confirmDelete', function(e){
                    $('input[name="contactsCheckbox"]').each(function() {
                        this.checked = false;
                    });
+                   $('#addCardMsg').show();
                    window.location.href = "{{route('home')}}";
                }
            }, error: function (reject){
+               $("#saveCard").attr("disabled", false);
                var response = $.parseJSON(reject.responseText);
                $.each(response.errors, function(key, val){
                    $("#" + key + "_error").text(val[0]);
@@ -1427,7 +1441,6 @@ $(document).on('click', '#confirmDelete', function(e){
 
    function resetNewCard(){
        $('#addCardForm')[0].reset();
-
        $('input[name="contactsCheckbox"]').each(function() {
            this.checked = false;
        });
@@ -1436,33 +1449,105 @@ $(document).on('click', '#confirmDelete', function(e){
 
    //get specific Card getCardId
    $(document).on('click', '#editCard', function(e){
-       event.preventDefault();
-       var card_id = $(this).data('id');
-       console.log(card_id)
-       $.get('card-edit/' + card_id, function (data) {
+       $('input[name="contactsCheckboxEdit"]').each(function() {
+           this.checked = false;
+       });
 
-           console.log(data.contactsThatInCard)
-            $('#EditcardName').val(data.card.name);
+       var card_id = $(this).data('id');
+       $.get('card-edit/' + card_id, function (data) {
+           const ids =data.contactsThatInCard;
+            $('#editCardName').val(data.card.name);
             $('#cardId').val(card_id);
 
-      //     $('input:checkbox:checked:visible:eq(0)').val();
-
-/*           $('input[name="contactsCheckboxEdit"]').each(function() {
-               if(jQuery.inArray($(this).val(), data.contactsThatInCard) !== -1){
-                   console.log($(this).val())
-                   $("#providerEdit").children('[value="' + providerId +'"]').attr('selected', true);
-
+           for (const checkbox of document.querySelectorAll("#contactsCheckboxEdit[name=contactsCheckboxEdit]")) {
+               if (ids.includes(Number(checkbox.value))) {
+                   checkbox.checked = true;
                }
-           })*/
-
-           $('input[name="contactsCheckboxEdit"]').each(function() {
-               if(jQuery.inArray(this.value, data.contactsThatInCard) !== -1) {
-                   this.checked = true;
-               }
-           });
-
+           }
            })
    });
+
+
+$(document).on('click', '#updateCard', function(e){
+    $("#updateCard").attr("disabled", true);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('#card_edit_error').text('');
+
+    var cardName= $('#editCardName').val();
+    var cardId = $('#cardId').val();
+
+    var contacts = [];
+    $.each($("input[name='contactsCheckboxEdit']:checked"), function(){
+        contacts.push($(this).val());
+    });
+
+    $.ajax({
+        type: 'post',
+        url: "{{route('site.card.update')}}",
+        data:{
+            card:cardName,
+            contactsIds:contacts,
+            card_id:cardId
+        },
+        cache: false,
+        success: function (response){
+            if(response.status===true){
+                $('#updateCardMsg').show();
+                $('#editCardMsg').show();
+                window.location.href = "{{route('home')}}";
+            }
+        }, error: function (reject){
+            $("#updateCard").attr("disabled", false);
+            var response = $.parseJSON(reject.responseText);
+            $.each(response.errors, function(key, val){
+                $("#" + key + "_edit_error").text(val[0]);
+            });
+        }
+    });
+});
+
+
+
+//get deleteId Card getDeleteId
+
+$(document).on('click', '#deleteCardId', function(e){
+    event.preventDefault();
+    var card_id = $(this).data('id');
+     $('#deleteCardId').val(card_id);
+});
+
+
+//delete card
+$(document).on('click', '#confirmCardDelete', function(e){
+    e.preventDefault();
+    $("#confirmCardDelete").attr("disabled", true);
+    var deleteId= $('#deleteCardId').val();
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type: 'get',
+        url: "{{url('/card-delete')}}" +'/'+ deleteId,
+        data: {
+        },
+        cache: false,
+        success: function (response){
+            if(response.status===true){
+                window.location.href = "{{route('home')}}";
+            }
+        },
+        error: function (reject){
+        }
+    });
+});
 
 
 </script>

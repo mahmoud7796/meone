@@ -6,10 +6,10 @@
     <div class="navbar-nav-scroll">
         <ul class="navbar-nav bd-navbar-nav ml-3 flex-row">
             <li class="nav-item1">
-                <a class="nav-link " href="" >Home</a>
+                <a class="nav-link " href="{{route('home')}}" >Home</a>
             </li>
             <li class="nav-item2 ml-5">
-                <a class="nav-link text-muted" href="" >Address Book</a>
+                <a class="nav-link text-muted" href="{{route('addressBook')}}" >Address Book</a>
             </li>
 
         </ul>
@@ -45,7 +45,7 @@
 
         @Auth
         <li class="nav-item ">
-            <a class="nav-item mr-md-2 ml-3" href="">
+            <a class="nav-item mr-md-2 ml-3" href="{{route('profile')}}">
                 <img src="{{asset('assets/img/Navigation Profile Image.png')}}" width="43" height="43" alt=""/>
             </a>
 

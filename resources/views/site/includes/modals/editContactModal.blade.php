@@ -33,10 +33,11 @@
                 </form>
             </div>
             <div class="modal-footer pr-5 pt-5 pb-5">
-                <button type="submit" id="updateContact" class="btn btn-warning">Update Contact</button>
                 <button type="button" class="modal-delete-cancel btn btn-light" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">Cancel</span>
                 </button>
+                <button type="submit" id="updateContact" class="btn btn-warning">Update Contact</button>
+
             </div>
         </div>
     </div>

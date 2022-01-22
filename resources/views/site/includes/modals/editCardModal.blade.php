@@ -19,7 +19,7 @@
                 <div class="row pl-3 pr-3 mr-3 ml-3 d-flex justify-content-center">
                     <form id="addCardForm">
                         @csrf
-                        <input type="text" id="EditcardName" class="form-control" placeholder="Card Name">
+                        <input type="text" id="editCardName" class="form-control" placeholder="Card Name">
                         <small id="card_edit_error" class="form-text text-danger"></small>
 
                     </form>
@@ -36,9 +36,10 @@
                                 </div>
                             </div>
                             <div style="width: 80%">
-                                <form id="checkboxesReset">
+                                <form id="editCheckboxesReset">
                                     <label style="width: 90%" class="pl-5 pt-2 pr-5">{{$contact->contact_string}}</label>
-                                    <input id="contactsCheckbox" name="contactsCheckboxEdit"  type="checkbox" value="{{$contact->id}}">
+                                    <input id="contactsCheckboxEdit" name="contactsCheckboxEdit"  type="checkbox" value="{{$contact->id}}">
+
                                 </form>
 
                             </div>
@@ -51,8 +52,10 @@
                 @endif
             </div>
             <div class="modal-footer pr-5 pt-5 pb-5">
-                <button onclick="resetNewCard()"  type="button" class="btn btn-light">Reset</button>
-                <button type="button" id="saveCard" class="btn btn-warning">Save Card</button>
+                <button type="button" class="modal-delete-cancel btn btn-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">Cancel</span>
+                </button>
+                <button type="button" id="updateCard" class="btn btn-warning">Update Card</button>
             </div>
     </div>
 
