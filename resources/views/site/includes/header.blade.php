@@ -46,7 +46,7 @@
         @Auth
         <li class="nav-item ">
             <a class="nav-item mr-md-2 ml-3" href="{{route('profile')}}">
-                <img src="{{asset('assets/img/Navigation Profile Image.png')}}" width="43" height="43" alt=""/>
+                <img src="{{Auth::user()->profile_img ?? asset('assets/img/profile/default.png')}}" width="43" height="43" alt=""/>
             </a>
 
         </li>

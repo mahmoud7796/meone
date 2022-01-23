@@ -30,10 +30,12 @@ class HomeController extends Controller
     public function home()
     {
         $userId = Auth::id();
-        $contacts = Contact::whereUserId($userId)->get();
+        $verifiedContacts = Contact::whereUserId($userId)->get();
+        $unVerifiedContacts = Contact::whereUserId($userId)->limit(0);
         $providers = Provider::get();
         $cards= Card::whereUserId($userId)->withCount(['contact'])->get();
-        return view('site.pages.home',compact('contacts','providers','cards'));
+        $contactCards = Card::with('contact');
+        return view('site.pages.home',compact('verifiedContacts','unVerifiedContacts','providers','cards','contactCards'));
     }
 
     public function getCard()

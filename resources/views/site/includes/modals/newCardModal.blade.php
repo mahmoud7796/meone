@@ -26,8 +26,8 @@
         <div class="row pt-5 d-flex justify-content-center" style="font: normal normal bold 18px/33px Cairo; color: #171717;">
             <p class="text-center">Add a Verified Contact to your Card</p>
         </div>
-        @if(isset($contacts) && $contacts->count()>0)
-            @foreach($contacts as $contact)
+        @if(isset($verifiedContacts) && $verifiedContacts->count()>0)
+            @foreach($verifiedContacts as $contact)
                 <div class="row pt-5 d-flex justify-content-center align-content-center">
                     <div style="width: 10%">
                         <div style="width: 50px;height: 50px">

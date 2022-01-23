@@ -107,13 +107,14 @@ Route::group(['middleware'=>'auth:web'], function(){
 
 ############### End Providers ####################
 
-############### Cards ####################
+############### Profile ####################
 
 Route::group(['middleware'=>'auth:web'], function(){
     Route::get('/profile', [ProfileController::class,'profile'])->name('profile');
+    Route::post('/change-password', [ProfileController::class,'changePassword'])->name('profile.changePassword');
 });
 
-############### End Cards ####################
+############### End Profile ####################
 
 ############### Adress Book ####################
 
@@ -127,12 +128,5 @@ Route::get('/get-card', [App\Http\Controllers\HomeController::class, 'getCard'])
 
 
 Route::get('/test',function(){
-      $card = \App\Models\Card::whereUserId(47)->find(1);
-  //  $card = Card::whereUserId(47)->find(1);
-
-    $card->  update([
-            'name' => 'firstCard detach91',
-            'user_name' =>1,
-        ]);
-    return true;
+    return $currentPass = Auth::user()->password;
 });
